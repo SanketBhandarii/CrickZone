@@ -10,7 +10,7 @@ function UserMatches() {
     const fetchUserMatches = async () => {
       try {
         const response = await axios.get(
-          "${import.meta.env.VITE_BACKEND_URL}/api/userMatches",
+          `${import.meta.env.VITE_BACKEND_URL}/api/userMatches`,
           { withCredentials: true }
         ); // Assuming this is your API route
         setMatches(response.data.matches);
