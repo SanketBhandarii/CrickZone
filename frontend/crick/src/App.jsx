@@ -15,7 +15,7 @@ function App() {
     async function getAuth() {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/home`,
+          `http://localhost:8000/api/home`,
           {
             withCredentials: true,
           }
@@ -37,8 +37,6 @@ function App() {
     }
 
     getAuth();
-
-    return () => clearTimeout(timeoutId);
   }, [navigate]);
 
   // Conditional rendering based on loading state
