@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendVerificationEmail = async (email, verificationIdentifier) => {
-  const verificationLink = `http://localhost:5173/verifyEmail/${verificationIdentifier}`;
+  const verificationLink = `http://crick-zone.vercel.app/verifyEmail/${verificationIdentifier}`;
 
   try {
     await transporter.sendMail({
