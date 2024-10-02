@@ -50,22 +50,21 @@ function UserMatches() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen w-full py-10 px-7 max-sm:px-4 bg-gray-900 relative">
       {/* Page Title */}
-      <i
-        className={`fa-solid text-white absolute top-0 left-0 fa-circle-left text-4xl cursor-pointer mt-10 ml-16 max-sm:ml-6`}
-        onClick={nav}
-      ></i>
-      <h1 className="text-3xl font-bold text-white mb-8 text-center w-full max-w-4xl">
-        Your Previous Matches
+      <h1 className="flex items-center py-5 pl-4 sm:pl-16 gap-2 text-2xl sm:text-3xl font-bold text-white w-full">
+        <i
+          className={`fa-solid text-white fa-circle-left text-2xl sm:text-4xl cursor-pointer mr-1`}
+          onClick={nav}
+        ></i>
+        <span>Your Previous Matches</span>
       </h1>
 
       {/* Conditional rendering for no matches */}
       {matches.length === 0 ? (
         <div className="text-white text-lg">No matches found.</div>
       ) : (
-        // Responsive Container for Matches
-        <div className="flex flex-col gap-4 w-full max-w-full px-4 max-sm:px-2">
-          {/* Scrollable Container for Smaller Screens */}
-          <div className="flex flex-wrap justify-center gap-4 overflow-hidden md:overflow-hidden lg:overflow-auto h-full max-h-[30rem]">
+        // Scrollable Container for Smaller Screens
+        <div className="flex flex-col w-full max-w-full px-4 max-sm:px-2 overflow-auto">
+          <div className="flex flex-wrap justify-center gap-4">
             {matches.map((match, index) => (
               <div
                 key={index}
