@@ -18,7 +18,7 @@ body {
   background: linear-gradient(135deg, #0f2f56, #0e0e0e);
 }
 .introLogo {
-  animation: logoAnimation 1.2s infinite ease-in-out forwards;
+  animation: logoAnimation 1.7s infinite ease-in-out forwards;
 }
 .team-btn {
   position: relative;
@@ -42,10 +42,10 @@ body {
 }
 @keyframes logoAnimation {
   50% {
-    transform: rotate(360deg) scale(0.5);
+    transform: rotate(0deg) scale(0.7);
   }
   100% {
-    transform: rotate(0deg) scale(1);
+    transform: rotate(360deg) scale(1);
   }
 }
 
