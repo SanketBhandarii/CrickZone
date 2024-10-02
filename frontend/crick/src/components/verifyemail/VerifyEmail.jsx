@@ -8,7 +8,7 @@ const VerifyEmail = () => {
     async function emailVerification() {
       try {
         const res = await axios.get(
-          `http://localhost:8000/api/verify/${token}`
+          `https://crickzone.onrender.com/api/verify/${token}`
         );
       } catch (error) {}
     }
