@@ -19,7 +19,7 @@ function SignUp() {
     useFormik({
       initialValues,
       validationSchema: signUpSchema,
-      onSubmit: async (values) => {
+      onSubmit: async (values, action) => {
         try {
           const response = await axios.post(
             `${import.meta.env.VITE_BACKEND_URL}/api/signup`,
@@ -32,6 +32,7 @@ function SignUp() {
               withCredentials: true,
             }
           );
+          action.resetForm();
           setMsg(response.data.msg);
           if (
             response.data.msg !== "User with this credentials already exist" &&
