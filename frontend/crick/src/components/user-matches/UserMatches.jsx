@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function UserMatches() {
   const [matches, setMatches] = useState([]); // State for matches
   const [loading, setLoading] = useState(true); // State for loading
   const [error, setError] = useState(null); // State for error handling
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserMatches = async () => {
@@ -25,9 +27,13 @@ function UserMatches() {
     fetchUserMatches();
   }, []);
 
+  function nav() {
+    navigate("/");
+  }
+
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-10">
+      <div className="flex items-center justify-center py-10 w-full h-screen bg-gray-900">
         <h2 className="text-2xl text-white">Loading matches...</h2>
       </div>
     );
@@ -42,8 +48,12 @@ function UserMatches() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center py-10 px-7 mx-2 max-sm:px-4 rounded-lg">
+    <div className="flex flex-col items-center justify-center min-h-screen w-full py-10 px-7 max-sm:px-4 bg-gray-900 relative">
       {/* Page Title */}
+      <i
+        className={`fa-solid text-white absolute top-0 left-0 fa-circle-left text-4xl cursor-pointer mt-10 ml-16 max-sm:ml-6`}
+        onClick={nav}
+      ></i>
       <h1 className="text-3xl font-bold text-white mb-8 text-center w-full max-w-4xl">
         Your Previous Matches
       </h1>
@@ -52,40 +62,43 @@ function UserMatches() {
       {matches.length === 0 ? (
         <div className="text-white text-lg">No matches found.</div>
       ) : (
-        // Horizontal Scrollable Container for Matches
-        <div className="flex gap-4 relative flex-wrap justify-center overflow-x-auto w-full max-w-full px-4 max-sm:px-2">
-          {matches.map((match, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 bg-gradient-to-br from-gray-800 to-gray-700 p-6 rounded-lg shadow-xl transition-transform duration-300 hover:shadow-2xl w-64 md:w-72 lg:w-80"
-            >
-              {/* Match Information */}
-              <div className="flex justify-between mb-2">
-                <div className="text-sm text-gray-300 flex">
-                  <span className="font-semibold pr-1 text-lime-400">
-                    Overs:{" "}
-                  </span>
-                  {match.over}
+        // Responsive Container for Matches
+        <div className="flex flex-col gap-4 w-full max-w-full px-4 max-sm:px-2">
+          {/* Scrollable Container for Smaller Screens */}
+          <div className="flex flex-wrap justify-center gap-4 overflow-hidden md:overflow-hidden lg:overflow-auto h-full max-h-[30rem]">
+            {matches.map((match, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 bg-gradient-to-br from-gray-800 to-gray-700 p-6 rounded-lg shadow-xl transition-transform duration-300 hover:shadow-2xl w-full sm:w-72 md:w-80"
+              >
+                {/* Match Information */}
+                <div className="flex justify-between mb-2">
+                  <div className="text-sm text-gray-300 flex">
+                    <span className="font-semibold pr-1 text-lime-400">
+                      Overs:{" "}
+                    </span>
+                    {match.over}
+                  </div>
+                  <div className="text-sm text-gray-300 flex">
+                    <span className="font-semibold px-1 text-lime-400">
+                      Location:
+                    </span>
+                    {match.location}
+                  </div>
                 </div>
-                <div className="text-sm text-gray-300 flex">
-                  <span className="font-semibold px-1 text-lime-400">
-                    Location:
+                <div className="flex gap-3 items-center mb-3">
+                  <span className="text-lg font-semibold text-white">
+                    {match.teams}
                   </span>
-                  {match.location}
+                  <span className="text-xs text-gray-300">{match.date}</span>
+                </div>
+                <div className="text-gray-100 mb-2">
+                  <span className="font-semibold text-lime-400">Result: </span>
+                  {match.result}
                 </div>
               </div>
-              <div className="flex gap-3 items-center mb-3">
-                <span className="text-lg font-semibold text-white">
-                  {match.teams}
-                </span>
-                <span className="text-xs text-gray-300">{match.date}</span>
-              </div>
-              <div className="text-gray-100 mb-2">
-                <span className="font-semibold text-lime-400">Result: </span>
-                {match.result}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
     </div>

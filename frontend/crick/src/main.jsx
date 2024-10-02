@@ -29,10 +29,6 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "/usermatches",
-        element: <UserMatches />,
-      },
-      {
         path: "/login",
         element: <Login />,
       },
@@ -63,6 +59,10 @@ const router = createBrowserRouter([
     path: "/verifyEmail/:token",
     element: <VerifyEmail />,
   },
+  {
+    path: "/usermatches",
+    element: <UserMatches/>
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(
