@@ -15,7 +15,7 @@ function App() {
     async function getAuth() {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/home`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/home`,
           {
             withCredentials: true,
           }
@@ -35,7 +35,6 @@ function App() {
         }, 1210);
       }
     }
-
     getAuth();
   }, [navigate]);
 
