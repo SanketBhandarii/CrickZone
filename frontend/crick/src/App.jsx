@@ -12,15 +12,14 @@ function App() {
 
   useEffect(() => {
     localStorage.clear();
-    console.log(import.meta.env.VITE_BACKEND_URL);
-    console.log("ha zalo click ya cha vr");
-    
-    
     async function getAuth() {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/home`, {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/home`,
+          {
+            withCredentials: true,
+          }
+        );
 
         if (response.data.msg !== "Please do login!") {
           return; // User is authenticated, no action needed
@@ -31,16 +30,16 @@ function App() {
         console.error("Error during authentication check:", error);
         navigate("/login");
       } finally {
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
           setLoading(false);
         }, 1210);
       }
     }
 
     getAuth();
+
+    return () => clearTimeout(timeoutId);
   }, [navigate]);
-
-
 
   // Conditional rendering based on loading state
   return loading ? (
