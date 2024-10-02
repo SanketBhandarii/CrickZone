@@ -18,7 +18,7 @@ body {
   background: linear-gradient(135deg, #0f2f56, #0e0e0e);
 }
 .introLogo {
-  animation: logoAnimation 1.7s infinite ease-in-out forwards;
+  animation: logoAnimation 1.5s infinite ease-in-out forwards;
 }
 .team-btn {
   position: relative;
