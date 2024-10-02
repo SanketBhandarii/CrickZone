@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Verified</title>
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(circle, #1c1c1c, #0f0f0f);
+        font-family: sans-serif;
+        color: #eee;
+      }
+
+      .box {
+        text-align: center;
+        padding: 40px;
+        background: #222;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      }
+
+      .check {
+        font-size: 2rem;
+        color: greenyellow;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      .check > img {
+        border-radius: 50%;
+      }
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 1rem;
+        color: #aaa;
+        padding-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="check">
+        <span style="color: white; font-size: 2rem">CrickZone</span>-
+        <span>✔</span>
+      </div>
+      <h1>Email Verified!</h1>
+      <p>Your email has been successfully verified.</p>
+      <a href="http://localhost:5173" style="color: skyblue;">Back to login</a>
+    </div>
+  </body>
+</html>
