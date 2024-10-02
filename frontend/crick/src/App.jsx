@@ -15,7 +15,7 @@ function App() {
 
     async function getAuth() {
       try {
-        const response = await axios.get(`https://crickzone.onrender.com/api/home`, {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/home`, {
           withCredentials: true,
         });
 

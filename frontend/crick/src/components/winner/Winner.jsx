@@ -33,7 +33,7 @@ function Winner() {
       }
       try {
         const req = await axios.post(
-          "https://crickzone.onrender.com/match/createMatch",
+          `${import.meta.env.VITE_BACKEND_URL}/match/createMatch`,
           {
             date: formattedDate,
             over: over,
