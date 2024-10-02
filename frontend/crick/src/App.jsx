@@ -12,7 +12,10 @@ function App() {
 
   useEffect(() => {
     localStorage.clear();
-
+    console.log(import.meta.env.VITE_BACKEND_URL);
+    console.log("ha zalo click ya cha vr");
+    
+    
     async function getAuth() {
       try {
         const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/home`, {
