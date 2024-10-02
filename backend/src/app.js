@@ -17,7 +17,7 @@ const app = express();
 // CORS configuration
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://crick-zone.vercel.app"],
     credentials: true,
   })
 );
