@@ -27,7 +27,7 @@ function Login() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        `https://crickzone.onrender.com/api/login`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/login`,
         { email, password },
         { withCredentials: true }
       );
@@ -61,7 +61,7 @@ function Login() {
       const decode = jwtDecode(cred.credential);
       try {
         const response = await axios.post(
-          `https://crickzone.onrender.com/api2/google/login`,
+          `${import.meta.env.VITE_BACKEND_URL}/api2/google/login`,
           { username: decode.name, googleEmail: decode.email },
           { withCredentials: true }
         );

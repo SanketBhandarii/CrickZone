@@ -10,7 +10,7 @@ function UserMatches() {
     const fetchUserMatches = async () => {
       try {
         const response = await axios.get(
-          "https://crickzone.onrender.com/api/userMatches",
+          "${import.meta.env.VITE_BACKEND_URL}/api/userMatches",
           { withCredentials: true }
         ); // Assuming this is your API route
         setMatches(response.data.matches);
@@ -42,7 +42,7 @@ function UserMatches() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center py-10 px-7 mx-2 max-sm:px-4 rounded-lg bg-gray-900">
+    <div className="flex flex-col items-center justify-center py-10 px-7 mx-2 max-sm:px-4 rounded-lg">
       {/* Page Title */}
       <h1 className="text-3xl font-bold text-white mb-8 text-center w-full max-w-4xl">
         Your Previous Matches

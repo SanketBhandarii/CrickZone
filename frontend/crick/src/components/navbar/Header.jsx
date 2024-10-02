@@ -12,7 +12,7 @@ const Header = () => {
   const navigate = useNavigate();
   const logout = async () => {
     try {
-      const response = await axios.get(`https://crickzone.onrender.com/api/logout`, {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/logout`, {
         withCredentials: true,
       });
 
