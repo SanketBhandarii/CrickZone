@@ -15,7 +15,7 @@ function App() {
 
     async function getAuth() {
       try {
-        const response = await axios.get(`http://localhost:8000/api/home`, {
+        const response = await axios.get(`https://crickzone.onrender.com/api/home`, {
           withCredentials: true,
         });
 

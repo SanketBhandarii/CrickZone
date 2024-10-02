@@ -25,7 +25,7 @@ function SignUp() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:8000/api/signup`,
+        `https://crickzone.onrender.com/api/signup`,
         {
           username,
           email,

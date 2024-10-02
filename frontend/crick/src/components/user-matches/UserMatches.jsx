@@ -10,7 +10,7 @@ function UserMatches() {
     const fetchUserMatches = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/userMatches",
+          "https://crickzone.onrender.com/api/userMatches",
           { withCredentials: true }
         ); // Assuming this is your API route
         setMatches(response.data.matches);
