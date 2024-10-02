@@ -91,7 +91,7 @@ export const verifyEmail = async (req, res) => {
       user.verified = true;
       await user.save();
     }
-    res.sendFile(path.join(__dirname, "../../public/index.html"));
+    // res.sendFile(path.join(__dirname, "../../public/index.html"));
   } catch (error) {
     console.log(error);
     res.status(400).json({ msg: "Invalid or expired token" });
