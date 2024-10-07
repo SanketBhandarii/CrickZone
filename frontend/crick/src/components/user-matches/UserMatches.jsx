@@ -15,7 +15,7 @@ function UserMatches() {
           `${import.meta.env.VITE_BACKEND_URL}/api/userMatches`,
           { withCredentials: true }
         ); // Assuming this is your API route
-        setMatches(response.data.matches)
+        setMatches(response.data.matches);
       } catch (error) {
         setError("Error fetching matches");
         console.error("Error fetching matches:", error);
