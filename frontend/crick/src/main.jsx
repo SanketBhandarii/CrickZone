@@ -25,10 +25,6 @@ const router = createBrowserRouter([
         element: <TeamInput />,
       },
       {
-        path: "/about",
-        element: <About />,
-      },
-      {
         path: "/login",
         element: <Login />,
       },
@@ -61,8 +57,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/usermatches",
-    element: <UserMatches/>
-  }
+    element: <UserMatches />,
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(
