@@ -22,9 +22,12 @@ function TeamInput() {
     localStorage.clear();
     async function getAuth() {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/home`, {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/home`,
+          {
+            withCredentials: true,
+          }
+        );
         if (response.data.msg !== "Please do login!") {
           setUser(response.data.username);
           setTimeToShowHeader(true);
@@ -45,6 +48,13 @@ function TeamInput() {
 
   function handleForm(event) {
     event.preventDefault();
+    const isT1nameValid = t1name.trim() !== "" && !/^\s*$/.test(t1name);
+    const isT2nameValid = t2name.trim() !== "" && !/^\s*$/.test(t2name);
+
+    if (!isT1nameValid || !isT2nameValid) {
+      setMessage("Enter valid names");
+      return;
+    }
     if (t1name.toLowerCase() === t2name.toLowerCase()) {
       setMessage("Team names must be different.");
       return;
@@ -58,7 +68,7 @@ function TeamInput() {
   }
 
   return (
-    <div className="flex mt-5 float">
+    <div className="flex mt-5">
       <div className="left h-height-1 w-width-1 flex flex-col justify-center items-center bg-white rounded-tl-lg rounded-bl-lg max-scrn2:rounded-lg shadow-md input-box">
         <div className="bg-sky-700 h-20 items-center font-font_1 justify-center rounded-tl-lg rounded-tr-lg w-full px-7 text-white font-semibold text-lg text-center hidden max-scrn2:flex">
           Welcome
@@ -79,7 +89,8 @@ function TeamInput() {
             Hey there👋,
             <span className="text-amber-700">
               {user ? user : "Let's set up your teams!"}!
-            </span><br/>
+            </span>
+            <br />
             Fill your team details
           </h2>
           <input
