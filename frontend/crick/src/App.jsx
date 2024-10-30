@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { timeToShowHeader } = useContext(Context);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); // Loading state to delay rendering
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function App() {
         );
 
         if (response.data.msg !== "Please do login!") {
-          return;
+          return; // User is authenticated, no action needed
         } else {
           navigate("/login");
         }
@@ -32,7 +32,7 @@ function App() {
         console.error("Error during authentication check:", error);
         navigate("/login");
       } finally {
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
           setLoading(false);
         }, 1210);
       }
@@ -59,26 +59,13 @@ function App() {
     );
   }, []);
 
+  // Conditional rendering based on loading state
   return loading ? (
-    <Intro />
+    <Intro /> // Show intro while loading
   ) : (
-    <div className="min-h-screen flex justify-center bg-gradient-to-b from-gray-900 to-transparent items-center relative">
-      <video
-        className="absolute bg-gray-900 top-0 left-0 w-full h-full object-cover"
-        autoPlay
-        loop
-        muted
-        style={{ zIndex: -1 }}
-      >
-        <source src="https://videos.pexels.com/video-files/27745554/12217505_2560_1440_30fps.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
-      <div className="relative z-10 w-full flex flex-col items-center">
-        {timeToShowHeader ? <Header /> : null}
-        <Outlet />
-      </div>
-      
+    <div className="min-h-screen flex justify-center items-center px-3 as">
+      {timeToShowHeader ? <Header /> : null} {/* Conditionally render header */}
+      <Outlet /> {/* Render child routes */}
       <ToastContainer />
     </div>
   );
