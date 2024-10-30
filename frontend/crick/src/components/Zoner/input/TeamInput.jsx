@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../../store/Context";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Crick1 from "../../../assets/crick1.jpg";
 
 function TeamInput() {
   const navigate = useNavigate();
@@ -68,7 +69,12 @@ function TeamInput() {
   }
 
   return (
-    <div className="flex mt-5">
+    <div className="flex mt-5 relative">
+      {/* <img
+        src="https://i.pinimg.com/564x/8f/fb/54/8ffb5412cfde4550759b8652dba34286.jpg"
+        className="absolute -top-20 -left-28 w-44 h-44 rounded-full object-cover transform -rotate-12"
+        alt="Cricket Icon"
+      /> */}
       <div className="left h-height-1 w-width-1 flex flex-col justify-center items-center bg-white rounded-tl-lg rounded-bl-lg max-scrn2:rounded-lg shadow-md input-box">
         <div className="bg-sky-700 h-20 items-center font-font_1 justify-center rounded-tl-lg rounded-tr-lg w-full px-7 text-white font-semibold text-lg text-center hidden max-scrn2:flex">
           Welcome
@@ -82,7 +88,7 @@ function TeamInput() {
         <form
           action=""
           className="h-96 gap-5 flex flex-col items-center justify-center"
-          onSubmit={(event) => handleForm(event)}
+          onSubmit={handleForm}
         >
           <h2 className="text-sky-500 text-lg font-semibold w-64 text-left">
             <p className="text-red-600 text-md w-72">{message}</p>

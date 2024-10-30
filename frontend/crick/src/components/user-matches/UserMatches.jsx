@@ -50,20 +50,19 @@ function UserMatches() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen w-full py-10 px-7 max-sm:px-4 bg-gray-900 relative">
       {/* Page Title */}
-      <h1 className="flex items-center py-5 pl-4 sm:pl-16 gap-2 text-2xl sm:text-3xl font-bold text-white w-full">
-        <i
-          className={`fa-solid text-white fa-circle-left text-2xl sm:text-4xl cursor-pointer mr-1`}
-          onClick={nav}
-        ></i>
-        <span>Your Previous Matches</span>
-      </h1>
+      <div className="h-auto max-w-full absolute top-8 left-8">
+        <button  className="flex items-center gap-2 text-white sm:text-xl">
+          <i className="fa-solid fa-circle-left text-3xl sm:text-3xl" onClick={() => navigate("/")}></i>
+          <span className="ml-2 text-xl">Your Previous Matches</span>
+        </button>
+      </div>
 
       {/* Conditional rendering for no matches */}
       {matches.length === 0 ? (
         <div className="text-white text-lg">No matches found.</div>
       ) : (
         // Scrollable Container for Smaller Screens
-        <div className="flex flex-col w-full max-w-full px-4 max-sm:px-2 overflow-auto">
+        <div className="flex flex-col w-full max-w-full px-4 mt-9 max-sm:px-2 overflow-auto">
           <div className="flex flex-wrap justify-center gap-4">
             {matches.map((match, index) => (
               <div

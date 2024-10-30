@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Header from "./components/navbar/Header";
 import Intro from "./components/Zoner/Intro";
 import axios from "axios";
 import { Context } from "./store/Context";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import crickvideo from './assets/crick.mp4';
 
 function App() {
   const { timeToShowHeader } = useContext(Context);
-  const [loading, setLoading] = useState(true); // Loading state to delay rendering
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,7 +25,7 @@ function App() {
         );
 
         if (response.data.msg !== "Please do login!") {
-          return; // User is authenticated, no action needed
+          return;
         } else {
           navigate("/login");
         }
@@ -30,7 +33,7 @@ function App() {
         console.error("Error during authentication check:", error);
         navigate("/login");
       } finally {
-        const timeoutId = setTimeout(() => {
+        setTimeout(() => {
           setLoading(false);
         }, 1210);
       }
@@ -38,13 +41,46 @@ function App() {
     getAuth();
   }, [navigate]);
 
-  // Conditional rendering based on loading state
+  useEffect(() => {
+    toast(
+      <span>
+        Check out the latest news{" "}
+        <NavLink
+          to="/currentnews"
+          style={{ color: "lightblue", textDecoration: "underline" }}
+        >
+          here
+        </NavLink>
+      </span>,
+      {
+        position: "bottom-right",
+        style: { backgroundColor: "black", color: "white" },
+        type: "success",
+      }
+    );
+  }, []);
+
   return loading ? (
-    <Intro /> // Show intro while loading
+    <Intro />
   ) : (
-    <div className="min-h-screen bg-slate-800 flex justify-center items-center px-3 as">
-      {timeToShowHeader ? <Header /> : null} {/* Conditionally render header */}
-      <Outlet /> {/* Render child routes */}
+    <div className="min-h-screen flex justify-center bg-gradient-to-b from-gray-900 to-transparent items-center relative">
+      <video
+        className="absolute bg-gray-900 top-0 left-0 w-full h-full object-cover"
+        autoPlay
+        loop
+        muted
+        style={{ zIndex: -1 }}
+      >
+        <source src={crickvideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <div className="relative z-10 w-full flex flex-col items-center">
+        {timeToShowHeader ? <Header /> : null}
+        <Outlet />
+      </div>
+      
+      <ToastContainer />
     </div>
   );
 }

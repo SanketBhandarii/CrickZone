@@ -90,7 +90,7 @@ function CrickContainer() {
                 <Confetti />
               </div>
             )}
-            <div className="w-full relative bg-gradient-to-r from-sky-600 to-sky-900 text-white  rounded-lg shadow-2xl py-11 px-4 max-w-md winner">
+            <div className="w-full relative bg-gradient-to-r from-sky-700 to-sky-900 text-white  rounded-lg shadow-2xl py-11 px-4 max-w-md winner">
               <Winner />
           
             </div>
