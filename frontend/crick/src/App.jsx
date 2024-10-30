@@ -62,23 +62,9 @@ function App() {
   return loading ? (
     <Intro />
   ) : (
-    <div className="min-h-screen flex justify-center bg-gradient-to-b from-gray-900 to-transparent items-center relative">
-      <video
-        className="absolute bg-gray-900 top-0 left-0 w-full h-full object-cover"
-        autoPlay
-        loop
-        muted
-        style={{ zIndex: -1 }}
-      >
-        <source src="https://videos.pexels.com/video-files/27745554/12217505_2560_1440_30fps.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
-      <div className="relative z-10 w-full flex flex-col items-center">
-        {timeToShowHeader ? <Header /> : null}
-        <Outlet />
-      </div>
-      
+    <div className="min-h-screen bg-slate-800 flex justify-center items-center px-3 as">
+      {timeToShowHeader ? <Header /> : null} {/* Conditionally render header */}
+      <Outlet /> {/* Render child routes */}
       <ToastContainer />
     </div>
   );

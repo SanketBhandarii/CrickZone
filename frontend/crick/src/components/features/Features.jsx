@@ -14,7 +14,7 @@
           </button>
         </div>
         
-        <div className="bg-gradient-to-r from-cyan-700 to-cyan-800 text-white px-4 py-6 rounded-2xl shadow-2xl w-full">
+        <div className="bg-gradient-to-r from-cyan-700 to-cyan-800 text-white px-4 py-6 rounded-2xl shadow-2xl w-full max-w-max">
           <h1 className="text-lg font-bold text-center mb-3">
             Voice Control Feature
           </h1>
