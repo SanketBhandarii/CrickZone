@@ -6,7 +6,6 @@ import axios from "axios";
 import { Context } from "./store/Context";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import crickvideo from './assets/crick.mp4';
 
 function App() {
   const { timeToShowHeader } = useContext(Context);
@@ -71,7 +70,7 @@ function App() {
         muted
         style={{ zIndex: -1 }}
       >
-        <source src={crickvideo} type="video/mp4" />
+        <source src="https://videos.pexels.com/video-files/27745554/12217505_2560_1440_30fps.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
