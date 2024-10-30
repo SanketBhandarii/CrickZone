@@ -103,7 +103,6 @@ function TeamInput() {
             type="text"
             placeholder="Team 1"
             onChange={(event) => setT1name(event.target.value)}
-            autoFocus
             minLength="2"
             maxLength="20"
             required
