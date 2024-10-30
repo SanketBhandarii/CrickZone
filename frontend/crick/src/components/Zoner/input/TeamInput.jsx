@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../../store/Context";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Crick1 from "../../../assets/crick1.jpg";
+
 
 function TeamInput() {
   const navigate = useNavigate();
