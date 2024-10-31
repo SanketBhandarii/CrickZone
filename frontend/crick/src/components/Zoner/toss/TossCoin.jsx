@@ -9,9 +9,9 @@ function TossCoin() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // if (teamInfo === false) {
-    //   navigate("/");
-    // }
+    if (teamInfo === false) {
+      navigate("/");
+    }
     setTimeout(() => {
       const random = Math.floor(Math.random() * 2) + 1;
       setTossResult(random === 2 ? "H" : "T");
