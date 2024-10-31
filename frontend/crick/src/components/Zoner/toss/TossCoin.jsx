@@ -42,14 +42,14 @@ function TossCoin() {
       <div className="flex flex-col items-center justify-center gap-2 mt-4">
         <div className="flex gap-4">
           <button
-            className="bg-sky-500 text-white rounded-md py-2 px-2 mt-4 hover:bg-sky-600 transition duration-300 w-auto"
+            className="bg-sky-500 text-white rounded-md py-3 px-3 mt-4 hover:bg-sky-600 transition duration-300 w-auto"
             value="H"
             onClick={handleClick}
           >
             {t1name} (HEADS)
           </button>
           <button
-            className="bg-sky-500 text-white rounded-md py-2 px-2 mt-4 hover:bg-sky-600 transition duration-300 w-auto"
+            className="bg- text-white rounded-md py-3 bg-yellow-500 hover:bg-yellow-600 px-3 mt-4 transition duration-300 w-auto"
             value="T"
             onClick={handleClick}
           >
