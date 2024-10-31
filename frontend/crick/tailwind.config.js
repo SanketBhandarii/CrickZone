@@ -20,7 +20,8 @@ export default {
       },
       width: {
         "width-1": "350px",
-        "width-2" : "650px"
+        "width-2" : "650px",
+        "width-3" : "600px"
       },
       fontFamily: {
         font_1: ['"Radio Canada Big"', "sans-serif"],

@@ -9,9 +9,9 @@ function TossCoin() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (teamInfo === false) {
-      navigate("/");
-    }
+    // if (teamInfo === false) {
+    //   navigate("/");
+    // }
     setTimeout(() => {
       const random = Math.floor(Math.random() * 2) + 1;
       setTossResult(random === 2 ? "H" : "T");
@@ -30,7 +30,7 @@ function TossCoin() {
   }
 
   return (
-    <div className="max-sm:h-height-1 max-sm:w-width-1 flex flex-col justify-center items-center bg-white max-w-md px-6 py-2 rounded-lg w-96">
+    <div className="max-sm:h-height-1 max-sm:w-width-1 flex flex-col justify-center items-center bg-white max-w-md px-6 py-6 rounded-lg w-width-3">
       <h1 className="text-sky-500 text-xl font-semibold py-4 text-center">
         Tossing the coin for you
       </h1>
