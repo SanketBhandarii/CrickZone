@@ -1,7 +1,9 @@
 // Runs.js
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../store/Context";
-import { handleClick } from "../../utils/handleClick.js"; // Import the function
+import { handleClick } from "../../utils/handleClick.js";
+import crick from "../../assets/6-audio.mp3"; // Import the function
+import wick from "../../assets/W-audio.mp3"; // Import the function
 
 function Runs() {
   const {
@@ -21,6 +23,8 @@ function Runs() {
     t2name,
     setMatchWinner,
   } = useContext(Context);
+
+  const [aud, setAud] = useState(false);
 
   useEffect(() => {
     if (ball === 6 && currentOver < over) {
@@ -42,11 +46,24 @@ function Runs() {
   }, [ball]);
 
   useEffect(() => {
-    
-  },[])
+    if (currentRun.at(-1) == 6 || currentRun.at(-1) == "W") {
+      setAud(true);
+      setTimeout(() => {
+        setAud(false);
+      }, 9020);
+    }
+  }, [currentRun, setCurrentRun, run, setRun]);
 
   return (
     <div className="flex flex-wrap items-center justify-center gap-3 p-2">
+      {aud ? (
+        <audio autoPlay loop>
+          <source
+            src={currentRun.at(-1) == "W" ? wick : crick}
+            type="audio/mp3"
+          />
+        </audio>
+      ) : null}
       {[1, 2, 3, 4, 5, 6].map((value) => (
         <div
           key={value}

@@ -92,7 +92,6 @@ function CrickContainer() {
             )}
             <div className="w-full relative bg-gradient-to-r from-sky-700 to-sky-900 text-white  rounded-lg shadow-2xl py-11 px-4 max-w-md winner">
               <Winner />
-          
             </div>
           </div>
         ) : (
@@ -128,7 +127,11 @@ function CrickContainer() {
                 <h5
                   key={index}
                   className={`${
-                    r === "W" ? "bg-red-600" : "bg-cyan-700"
+                    r === "W"
+                      ? "bg-red-600"
+                      : r === 6
+                      ? "bg-amber-600"
+                      : "bg-cyan-700"
                   } px-4 py-2 rounded-full text-white`}
                 >
                   {r}
