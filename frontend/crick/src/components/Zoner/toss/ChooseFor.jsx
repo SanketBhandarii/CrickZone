@@ -69,7 +69,9 @@ function ChooseFor() {
           className="flex flex-col items-center gap-6 text-white"
           onSubmit={handleFormSubmit}
         >
-          <span className="ml-2 text-2xl font-semibold text-center max-sm:text-xl">What Do You Choose? </span>
+          <span className="ml-2 text-2xl font-semibold text-center max-sm:text-xl">
+            What Do You Choose?{" "}
+          </span>
           <div className="flex flex-col sm:flex-row gap-4">
             <label className="flex items-center font-medium cursor-pointer text-white">
               <input
@@ -80,7 +82,9 @@ function ChooseFor() {
                 required
                 className="form-radio h-6 w-6 cursor-pointer"
               />
-              <span className="ml-1 text-2xl font-semibold max-sm:text-xl">Batting</span>
+              <span className="ml-1 text-2xl font-semibold max-sm:text-xl">
+                Batting
+              </span>
             </label>
 
             <label className="flex items-center font-medium text-white cursor-pointer">
@@ -92,12 +96,14 @@ function ChooseFor() {
                 required
                 className="form-radio h-6 w-6 cursor-pointer"
               />
-              <span className="ml-1 text-2xl font-semibold max-sm:text-xl">Bowling</span>
+              <span className="ml-1 text-2xl font-semibold max-sm:text-xl">
+                Bowling
+              </span>
             </label>
           </div>
           <button
             type="submit"
-            className="bg-gray-800 text-white font-semibold rounded-md py-3 px-6 transition duration-300 transform hover:scale-105"
+            className="text-black font-semibold rounded-md py-3 px-6 bg-yellow-400 hover:bg-yellow-500 transition duration-300"
           >
             🚀 Start Match
           </button>
