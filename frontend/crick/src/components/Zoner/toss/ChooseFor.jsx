@@ -19,6 +19,7 @@ function ChooseFor() {
       localStorage.setItem("t1name", inning);
     }
   }, [inning]);
+
   const handleSubmit = (event) => {
     const choice = event.target.value;
     setDecision(choice);
@@ -46,52 +47,57 @@ function ChooseFor() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-white h-auto p-8 rounded-xl mx-auto mt-20 shadow-md max-w-md w-full">
+    <div className="flex flex-col items-center justify-center bg-gradient-to-br from-sky-600 h-auto py-12 rounded-2xl mx-auto mt-20 shadow-xl max-w-xl w-full">
       {decision ? (
-        <h1 className="font-mono text-center text-neutral-800 text-xl font-semibold">
-          Let's Start The MATCH 😎
+        <h1 className="text-center text-white text-2xl max-sm:text-xl font-semibold mb-6 animate-bounce">
+           Let's Start The MATCH! 😎
         </h1>
-      ) : null}
-      <label className="text-neutral-800 text-xl font-semibold py-4 text-center">
-        <span className="text-sky-500">{tossWinner}</span>, you won the toss!
+      ) : (
+        <h1 className="text-center text-white text-2xl font-semibold mb-6">
+          It's Your Call!
+        </h1>
+      )}
+
+      <label className="text-white text-xl font-semibold text-center mb-6">
+        <span className="text-yellow-300">{tossWinner}</span>, you won the toss!
         <br />
-        What do you choose?
+        What do you choose? 🏏
       </label>
 
       <form
-        className="flex flex-col items-center gap-4 mt-4"
+        className="flex flex-col items-center gap-6 mt-4"
         onSubmit={handleFormSubmit}
       >
-        <div className="flex gap-6">
-          <label className="flex items-center font-semibold text-neutral-800 cursor-pointer">
+        <div className="flex flex-col sm:flex-row gap-5">
+          <label className="flex items-center font-medium text-white cursor-pointer">
             <input
               type="radio"
               value="Batting"
               onChange={handleSubmit}
               name="choice"
               required
-              className="form-radio h-7 w-7 cursor-pointer"
+              className="form-radio h-6 w-6 cursor-pointer"
             />
-            <span className="ml-2 text-xl">Batting</span>
+            <span className="ml-1 text-xl font-semibold">🏏Batting</span>
           </label>
 
-          <label className="flex items-center font-semibold text-neutral-800 cursor-pointer">
+          <label className="flex items-center font-medium text-white cursor-pointer">
             <input
               type="radio"
               value="Bowling"
               onChange={handleSubmit}
               name="choice"
               required
-              className="form-radio h-7 w-7"
+              className="form-radio h-6 w-6 cursor-pointer"
             />
-            <span className="ml-2 text-xl cursor-pointer">Bowling</span>
+            <span className="ml-1 text-xl font-semibold">🎯Bowling</span>
           </label>
         </div>
         <button
           type="submit"
-          className="bg-sky-500 team-btn text-white flex rounded-md py-2 px-6 mt-4 transition duration-300"
+          className="bg-lime-500 text-black font-semibold rounded-md py-2 px-6 mt-4 transition duration-300 transform hover:scale-105"
         >
-          Start Match
+          🚀 Start Match
         </button>
       </form>
     </div>

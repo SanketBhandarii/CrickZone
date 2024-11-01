@@ -49,7 +49,7 @@ function TossCoin() {
             {t1name} (HEADS)
           </button>
           <button
-            className="bg- text-white rounded-md py-3 bg-yellow-500 hover:bg-yellow-600 px-3 mt-4 transition duration-300 w-auto"
+            className="bg- text-white rounded-md py-3 bg-lime-500 hover:bg-lime-600 px-3 mt-4 transition duration-300 w-auto"
             value="T"
             onClick={handleClick}
           >
