@@ -29,7 +29,7 @@ function TossCoin() {
   }
 
   return (
-    <div className="flex flex-col sm:flex-row h-[60vh] max-md:h-[70vh] max-w-4xl mx-auto mt-10 rounded-2xl shadow-xl overflow-hidden">
+    <div className="flex flex-col sm:flex-row h-[60vh] max-md:h-[70vh] max-w-4xl mx-auto mt-1 rounded-2xl shadow-xl overflow-hidden">
       {/* Left Side - Teal */}
       <div className="flex-1 bg-sky-500 w-[500px] flex items-center justify-center py-8 max-md:py-4 max-md:max-w-full">
         <div className="text-center text-white">
