@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../../store/Context";
 import { useNavigate } from "react-router-dom";
-import tossgif from "../../../assets/tossgif.gif";
 
 function TossCoin() {
   const { t1name, t2name, teamInfo, setTossWinner } = useContext(Context);
@@ -30,35 +29,46 @@ function TossCoin() {
   }
 
   return (
-    <div className="max-sm:h-height-1 max-sm:w-width-1 flex flex-col justify-center items-center bg-white max-w-md px-6 py-6 rounded-lg w-width-3">
-      <h1 className="text-sky-500 text-xl font-semibold py-4 text-center">
-        Tossing the coin for you
-      </h1>
-      <img
-        src="https://i.pinimg.com/originals/d7/49/06/d74906d39a1964e7d07555e7601b06ad.gif"
-        alt="Coin Toss"
-        className="rounded-full w-64 max-w-full"
-      />
-      <div className="flex flex-col items-center justify-center gap-2 mt-4">
-        <div className="flex gap-4">
-          <button
-            className="bg-sky-500 text-white rounded-md py-3 px-3 mt-4 hover:bg-sky-600 transition duration-300 w-auto"
-            value="H"
-            onClick={handleClick}
-          >
-            {t1name} (HEADS)
-          </button>
-          <button
-            className="bg- text-white rounded-md py-3 bg-lime-500 hover:bg-lime-600 px-3 mt-4 transition duration-300 w-auto"
-            value="T"
-            onClick={handleClick}
-          >
-            {t2name} (TAILS)
-          </button>
+    <div className="flex flex-col sm:flex-row h-[60vh] max-md:h-[70vh] max-w-4xl mx-auto mt-10 rounded-2xl shadow-xl overflow-hidden">
+      {/* Left Side - Teal */}
+      <div className="flex-1 bg-sky-500 w-[500px] flex items-center justify-center py-8 max-md:py-4 max-md:max-w-full">
+        <div className="text-center text-white">
+          <h1 className="text-3xl font-bold max-sm:text-2xl">Spinning the Coin!</h1>
+          <img
+            src="https://i.pinimg.com/originals/d7/49/06/d74906d39a1964e7d07555e7601b06ad.gif"
+            alt="Coin Toss"
+            className="rounded-full w-64 max-w-full my-4 max-md:w-56"
+          />
+          <h1 className="text-2xl font-bold">Who will win?</h1>
         </div>
-        <h2 className="text-neutral-800 text-xl font-semibold py-4 text-center">
-          Who will we spin up?
-        </h2>
+      </div>
+
+      {/* Right Side - Yellow */}
+      <div className="flex-1 bg-white flex items-center justify-center ">
+        <div className="flex flex-col items-center justify-center">
+          <h2 className="text-neutral-800 text-2xl font-semibold py-4 text-center max-sm:text-xl max-sm:py-2">
+            Who Will We Spin Up?
+          </h2>
+          <div className="flex gap-4">
+            <button
+              className="bg-sky-500 text-white rounded-md py-3 px-4 mt-4 hover:bg-sky-600 transition duration-300 w-auto max-sm:py-2 max-sm:px-2 max-sm:mt-2"
+              value="H"
+              onClick={handleClick}
+            >
+              {t1name} (HEADS)
+            </button>
+            <button
+              className="bg-indigo-500 text-white rounded-md py-3 px-4 mt-4 hover:bg-indigo-600 transition duration-300 w-auto  max-sm:py-2 max-sm:px-2 max-sm:mt-2"
+              value="T"
+              onClick={handleClick}
+            >
+              {t2name} (TAILS)
+            </button>
+          </div>
+          <h2 className="text-neutral-800 text-xl w-80 font-semibold py-7 text-center max-sm:py-4 max-sm:text-lg">
+            Choose Your Side: The Coin Will Decide!
+          </h2>
+        </div>
       </div>
     </div>
   );
