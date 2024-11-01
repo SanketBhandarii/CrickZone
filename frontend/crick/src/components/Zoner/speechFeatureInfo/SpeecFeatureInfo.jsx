@@ -11,12 +11,7 @@ function SpeecFeatureInfo() {
         See the new feature! Use voice commands like{" "}
         <span className="font-bold">"one run"</span> or{" "}
         <span className="font-bold">"wide"</span> to update the score.{" "}
-        <NavLink
-          to="/features"
-          className="text-yellow-300 underline hover:text-yellow-400"
-        >
-          Check how to use
-        </NavLink>
+      
       </p>
     </div>
   );
