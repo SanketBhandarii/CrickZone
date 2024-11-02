@@ -54,7 +54,7 @@ function ChooseFor() {
           ) : (
             <h1 className="text-3xl font-semibold mb-4">It's Your Call!</h1>
           )}
-          <label className="text-2xl font-semibold mb-4 max-sm:text-xl">
+          <label className="text-xl font-semibold mb-4">
             <span className="text-sky-500">{tossWinner}</span>, you won the
             toss!
             <br />

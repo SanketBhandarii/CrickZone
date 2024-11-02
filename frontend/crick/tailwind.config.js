@@ -14,14 +14,16 @@ export default {
       },
       colors: {
         "t-clr1": "#1d2756",
+        "skyBlueStart": "#007adf",
+        "skyBlueEnd": "#00ecbc",
       },
       height: {
         "height-1": "440px",
       },
       width: {
         "width-1": "350px",
-        "width-2" : "650px",
-        "width-3" : "600px"
+        "width-2": "650px",
+        "width-3": "600px",
       },
       fontFamily: {
         font_1: ['"Radio Canada Big"', "sans-serif"],

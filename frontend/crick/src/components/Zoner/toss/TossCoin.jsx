@@ -33,7 +33,7 @@ function TossCoin() {
       {/* Left Side - Teal */}
       <div className="flex-1 bg-sky-500 w-[500px] flex items-center justify-center py-8 max-md:py-4 max-md:max-w-full">
         <div className="text-center text-white">
-          <h1 className="text-3xl font-bold max-sm:text-2xl">Spinning the Coin!</h1>
+          <h1 className="text-2xl font-bold">Spinning the Coin!</h1>
           <img
             src="https://i.pinimg.com/originals/d7/49/06/d74906d39a1964e7d07555e7601b06ad.gif"
             alt="Coin Toss"

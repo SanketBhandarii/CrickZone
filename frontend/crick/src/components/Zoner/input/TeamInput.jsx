@@ -70,13 +70,8 @@ function TeamInput() {
 
   return (
     <div className="flex mt-5 relative">
-      {/* <img
-        src="https://i.pinimg.com/564x/8f/fb/54/8ffb5412cfde4550759b8652dba34286.jpg"
-        className="absolute -top-20 -left-28 w-44 h-44 rounded-full object-cover transform -rotate-12"
-        alt="Cricket Icon"
-      /> */}
       <div className="left h-height-1 w-width-1 flex flex-col justify-center items-center bg-white rounded-tl-lg rounded-bl-lg max-scrn2:rounded-lg shadow-md input-box">
-        <div className="bg-sky-700 h-20 items-center font-font_1 justify-center rounded-tl-lg rounded-tr-lg w-full px-7 text-white font-semibold text-lg text-center hidden max-scrn2:flex">
+        <div className="bg-sky-500 h-20 items-center font-font_1 justify-center rounded-tl-lg rounded-tr-lg w-full px-7 text-white font-semibold text-lg text-center hidden max-scrn2:flex">
           Welcome
           <br /> to CrickZone!
           <img
@@ -131,7 +126,7 @@ function TeamInput() {
           </button>
         </form>
       </div>
-      <div className="right flex flex-col gap-5 justify-center items-center rounded-tr-lg rounded-br-lg h-height-1 w-80 bg-sky-700 px-7 text-white font-semibold text-lg max-scrn2:hidden text-center colorChanger">
+      <div className="right flex flex-col gap-5 justify-center items-center rounded-tr-lg rounded-br-lg h-height-1 w-80 bg-sky-600 px-7 text-white font-semibold text-lg max-scrn2:hidden text-center colorChanger">
         <img
           src="https://cdn.pixabay.com/photo/2017/01/31/15/31/tennis-2025095_1280.png"
           width={120}
