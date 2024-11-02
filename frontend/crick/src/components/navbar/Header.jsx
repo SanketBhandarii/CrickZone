@@ -12,9 +12,12 @@ const Header = () => {
   const navigate = useNavigate();
   const logout = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/logout`, {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/logout`,
+        {
+          withCredentials: true,
+        }
+      );
 
       if (response.data.msg == "Logout Successfull") {
         setTimeToShowHeader(false);
@@ -86,8 +89,9 @@ const Header = () => {
 
       {/* Desktop Menu */}
       <nav className="relative text-lg text-white font-medium flex items-center space-x-6 max-scrn1:hidden">
-        <NavLink to="/" className="text-sky-400">
+        <NavLink to="/" className="text-sky-400 flex gap-2 items-center">
           Play
+          <i class="fa-solid fa-puzzle-piece text-lime-500 text-xl"></i>
         </NavLink>
         <NavLink to="/features">Features</NavLink>
         <NavLink to="/about">About Us</NavLink>

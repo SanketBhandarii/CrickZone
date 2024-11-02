@@ -43,7 +43,7 @@ function ChooseFor() {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row h-[54vh] max-sm:h-[67vh] w-full max-w-4xl mx-auto mt-1 rounded-2xl shadow-xl overflow-hidden  max-sm:mx-3">
+    <div className="flex flex-col sm:flex-row h-[54vh] max-sm:h-[67vh] w-full max-w-4xl mx-auto mt-1 rounded-lg shadow-xl overflow-hidden  max-sm:mx-3">
       {/* Left Side - Teal */}
       <div className="flex-1 bg-white flex items-center justify-center py-8">
         <div className="text-center ">
