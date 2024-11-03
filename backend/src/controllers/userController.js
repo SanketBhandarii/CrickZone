@@ -1,10 +1,11 @@
 import { User } from "../models/userModel.js";
-import bcyrpt from "bcryptjs";
+import bcrypt from "bcryptjs";
 import { randomUUID } from "crypto";
 import jwt from "jsonwebtoken";
 import path from "path";
 import { fileURLToPath } from "url"; // To resolve the __dirname
 import { sendVerificationEmail } from "../service/emailService.js";
+import axios from "axios";
 // Helper to get __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -55,14 +56,20 @@ export const signup = async (req, res) => {
     let user = await User.findOne({
       $or: [{ username }, { email }],
     });
+
     if (user) {
-      res.json({ msg: "User with this credentials already exist" });
+      res.json({ msg: "User with these credentials already exists" });
       return;
     }
-    let hashed = await bcyrpt.hash(password, 10);
+
+    let hashed = await bcrypt.hash(password, 10);
     const verificationIdentifier = randomUUID();
-    let emailSent = await sendVerificationEmail(email, verificationIdentifier);
-    if (emailSent == true) {
+
+    const emailResponse = await axios.get(
+      `https://emailvalidation.abstractapi.com/v1/?api_key=9b88009775264ce29b4cb54327cb4db5&email=${email}`
+    );
+
+    if (emailResponse.data.is_smtp_valid.value === true) {
       user = await User.create({
         username,
         email,
@@ -70,15 +77,16 @@ export const signup = async (req, res) => {
         verified: false,
         verificationIdentifier,
       });
+
+      await sendVerificationEmail(email, verificationIdentifier);
       res.json({ msg: "SignUp successful, check your mail for verification" });
     } else {
-      res.json({ msg: "Invalid Email Id" });
+      res.json({ msg: "Invalid Email ID" });
       console.error("Failed to send verification email. User not created.");
     }
-
-    // await sendVerificationEmail(user.email, verificationIdentifier);
   } catch (e) {
-    console.log(e);
+    console.log("Error during signup:", e);
+    res.status(500).json({ msg: "An error occurred during signup." });
   }
 };
 
