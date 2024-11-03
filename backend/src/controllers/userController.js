@@ -70,6 +70,7 @@ export const signup = async (req, res) => {
         verified: false,
         verificationIdentifier,
       });
+      res.json({ msg: "SignUp successful, check your mail for verification" });
     } else {
       res.json({ msg: "Invalid Email Id" });
       console.error("Failed to send verification email. User not created.");
@@ -78,7 +79,6 @@ export const signup = async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
       expiresIn: "1h", // You can set the expiry time based on your preference
     });
-    res.json({ msg: "SignUp successful, check your mail for verification" });
     // await sendVerificationEmail(user.email, verificationIdentifier);
   } catch (e) {
     console.log(e);
