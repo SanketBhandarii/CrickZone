@@ -27,7 +27,10 @@ export const sendVerificationEmail = async (email, verificationIdentifier) => {
       html: `<p>Click the link below to verify your email:</p>
              <a href="${verificationLink}">${verificationLink}</a>`,
     });
+    return true;
   } catch (error) {
     console.error("Error sending verification email:", error);
+    return false;
   }
+  
 };

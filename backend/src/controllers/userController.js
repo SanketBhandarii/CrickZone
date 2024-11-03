@@ -61,18 +61,27 @@ export const signup = async (req, res) => {
     }
     let hashed = await bcyrpt.hash(password, 10);
     const verificationIdentifier = randomUUID();
-    user = await User.create({
-      username,
-      email,
-      password: hashed,
-      verified: false,
-      verificationIdentifier,
-    });
+    let emailSent = await sendVerificationEmail(
+      user.email,
+      verificationIdentifier
+    );
+    if (emailSent) {
+      user = await User.create({
+        username,
+        email,
+        password: hashed,
+        verified: false,
+        verificationIdentifier,
+      });
+    } else {
+      console.error("Failed to send verification email. User not created.");
+      return;
+    }
     const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
       expiresIn: "1h", // You can set the expiry time based on your preference
     });
     res.json({ msg: "SignUp successful, check your mail for verification" });
-    await sendVerificationEmail(user.email, verificationIdentifier);
+    // await sendVerificationEmail(user.email, verificationIdentifier);
   } catch (e) {
     console.log(e);
   }
