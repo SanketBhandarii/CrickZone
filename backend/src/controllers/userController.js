@@ -73,7 +73,9 @@ export const signup = async (req, res) => {
         verified: false,
         verificationIdentifier,
       });
+      return;
     } else {
+      res.json({ msg: "Invalid Email Id" });
       console.error("Failed to send verification email. User not created.");
       return;
     }
