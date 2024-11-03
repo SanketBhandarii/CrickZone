@@ -61,10 +61,7 @@ export const signup = async (req, res) => {
     }
     let hashed = await bcyrpt.hash(password, 10);
     const verificationIdentifier = randomUUID();
-    let emailSent = await sendVerificationEmail(
-      user.email,
-      verificationIdentifier
-    );
+    let emailSent = await sendVerificationEmail(email, verificationIdentifier);
     if (emailSent) {
       user = await User.create({
         username,
@@ -73,7 +70,6 @@ export const signup = async (req, res) => {
         verified: false,
         verificationIdentifier,
       });
-      return;
     } else {
       res.json({ msg: "Invalid Email Id" });
       console.error("Failed to send verification email. User not created.");
