@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../../store/Context";
-import { handleWick } from '../../utils/handleWick.js';
+import { handleWick } from "../../utils/handleWick.js";
 import { handleSpecialClick } from "../../utils/handleSpecialClick.js"; // Ensure correct path
 
 function Dwwn() {
@@ -19,7 +19,16 @@ function Dwwn() {
   } = useContext(Context);
 
   function handleWickWrapper(value, msg = "W") {
-    handleWick(value, msg, setWicket, setBall, setCurrentRun, wicket, currentOver, over);
+    handleWick(
+      value,
+      msg,
+      setWicket,
+      setBall,
+      setCurrentRun,
+      wicket,
+      currentOver,
+      over
+    );
   }
 
   function undo() {
@@ -58,13 +67,33 @@ function Dwwn() {
       </div>
       <div
         className="h-auto px-2 py-2 bg-teal-700 rounded-md flex justify-center items-center text-slate-200 cursor-pointer text-md transition duration-200"
-        onClick={() => handleSpecialClick("Wide", setBall, setRun, setCurrentRun, currentOver, over, wicket)}
+        onClick={() =>
+          handleSpecialClick(
+            "Wide",
+            setBall,
+            setRun,
+            setCurrentRun,
+            currentOver,
+            over,
+            wicket
+          )
+        }
       >
         Wide
       </div>
       <div
         className="h-auto px-2 py-2 bg-teal-700 rounded-md flex justify-center items-center text-slate-200 cursor-pointer text-md transition duration-200"
-        onClick={() => handleSpecialClick("No ball", setBall, setRun, setCurrentRun, currentOver, over, wicket)}
+        onClick={() =>
+          handleSpecialClick(
+            "No ball",
+            setBall,
+            setRun,
+            setCurrentRun,
+            currentOver,
+            over,
+            wicket
+          )
+        }
       >
         No ball
       </div>

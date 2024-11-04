@@ -1,8 +1,11 @@
 import React from 'react'
+import Header from '../navbar/Header'
 
 function LandingPage() {
   return (
-    <div>LandingPage</div>
+    <div className='bg-black min-h-screen'>
+      <Header/>
+    </div>
   )
 }
 
