@@ -64,7 +64,7 @@ function ChooseFor() {
       </div>
 
       {/* Right Side - Gold */}
-      <div className="flex-1 bg-sky-600 flex items-center justify-center py-8">
+      <div className="flex-1 bg-sky-500 flex items-center justify-center py-8">
         <form
           className="flex flex-col items-center gap-6 text-white"
           onSubmit={handleFormSubmit}
@@ -101,6 +101,7 @@ function ChooseFor() {
               </span>
             </label>
           </div>
+
           <button
             type="submit"
             className="text-black font-semibold rounded-md py-3 px-6 bg-yellow-400 hover:bg-yellow-500 transition duration-300"
