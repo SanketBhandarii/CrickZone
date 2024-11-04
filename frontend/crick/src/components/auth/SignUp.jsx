@@ -67,6 +67,7 @@ function SignUp() {
         <img
           src="https://cdn.pixabay.com/photo/2017/01/31/15/31/tennis-2025095_1280.png"
           width={120}
+          className="rotate"
         />
         <span>
           <h2>Hello, Friend!</h2>
