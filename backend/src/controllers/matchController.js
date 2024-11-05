@@ -40,3 +40,22 @@ export const createMatch = async (req, res) => {
     return res.status(500).json({ message: "Failed to create match", error });
   }
 };
+
+export const deleteMatch = async (req, res) => {
+  const { matchId } = req.body;
+
+  try {
+    const match = await Match.findById(matchId);
+    if (!match) {
+      return res.status(404).json({ msg: "Match not found" });
+    }
+
+    await Match.findByIdAndDelete(matchId);
+    await User.updateMany({}, { $pull: { matches: matchId } });
+
+    return res.status(200).json({ msg: "Match deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting match:", error);
+    return res.status(500).json({ message: "Failed to delete match", error });
+  }
+};

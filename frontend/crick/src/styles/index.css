@@ -33,6 +33,7 @@ body {
 }
 .introLogo {
   animation: logoAnimation 1.5s infinite ease-in-out forwards;
+  box-shadow: 2px 2px 200px rgb(1, 115, 56);
 }
 .team-btn {
   position: relative;
@@ -46,7 +47,7 @@ body {
   right: 0;
   left: 0;
   width: 0%;
-  background-color: rgba(0, 70, 113, 0.847);
+  background-color: rgba(0, 94, 141, 0.847);
   border-radius: 5px;
   transition: 0.27s linear all;
   z-index: -1;

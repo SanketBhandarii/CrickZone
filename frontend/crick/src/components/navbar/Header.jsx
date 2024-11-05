@@ -78,6 +78,9 @@ const Header = () => {
           <NavLink to="/about" onClick={toggleMenu}>
             <li className="cursor-pointer py-2 px-2">About Us</li>
           </NavLink>
+          <NavLink to="/about" onClick={toggleMenu}>
+            <li className="cursor-pointer py-2 px-2">Reviews</li>
+          </NavLink>
           <button
             onClick={logout}
             className="flex items-center text-black text-lg gap-2 p-2 rounded-lg bg-lime-400 hover:bg-lime-600 transition duration-300"
@@ -95,6 +98,9 @@ const Header = () => {
         </NavLink>
         <NavLink to="/features">Features</NavLink>
         <NavLink to="/about">About Us</NavLink>
+        <NavLink to="/reviews" className="bg-orange-700 px-2 py-2 rounded-md">
+          Reviews
+        </NavLink>
         <button
           onClick={logout}
           className="flex items-center text-black text-lg gap-2 p-2 rounded-lg bg-lime-400 hover:bg-lime-600 transition duration-300"

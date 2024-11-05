@@ -53,7 +53,7 @@ function App() {
       </span>,
       {
         position: "bottom-right",
-        style: { backgroundColor: "black", color: "white" },
+        style: { backgroundColor: "#162845", color: "white" },
         type: "success",
       }
     );

@@ -121,7 +121,7 @@ export const verifyEmail = async (req, res) => {
 
 export const getUserMatches = async (req, res) => {
   const token = req.cookies.token;
-
+  
   if (!token) {
     return res
       .status(401)

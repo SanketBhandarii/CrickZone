@@ -23,7 +23,7 @@ const LiveMatch = () => {
       const stories = response.data.storyList;
       const topHeadlines = stories
         .filter(item => item.story)
-        .slice(0, 4)
+        .slice(0, 6)
         .map(item => item.story.hline);
       setMatchData(topHeadlines);
     } catch (error) {

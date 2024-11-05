@@ -21,7 +21,7 @@ export const sendVerificationEmail = async (email, verificationIdentifier) => {
 
   try {
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+      from: "THECEO@CrickZone.com",
       to: email,
       subject: "Welcome to CrickZone - Verify Your Email",
       html: `<p>Click the link below to verify your email:</p>

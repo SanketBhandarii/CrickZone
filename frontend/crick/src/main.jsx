@@ -16,6 +16,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import VerifyEmail from "./components/verifyemail/VerifyEmail.jsx";
 import LiveScore from "./components/LiveScore.jsx";
 import LiveMatch from "./components/LiveScore.jsx";
+import Reviews from "./components/review/Reviews.jsx";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <About />,
+  },
+  {
+    path: "/reviews",
+    element: <Reviews />,
   },
 ]);
 
