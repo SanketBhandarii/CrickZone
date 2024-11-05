@@ -120,8 +120,8 @@ function CrickContainer() {
           </div>
         )
       ) : (
-        <div className="flex flex-col gap-2">
-          <div className="h-auto w-full max-w-lg py-12 bg-white rounded-xl flex flex-col items-center gap-4 mx-1">
+        <div className="flex flex-col gap-2 w-full items-center">
+          <div className="h-auto w-[600px] max-scrn4:w-full max-scrn4:max-w-lg py-12 bg-white rounded-xl flex flex-col items-center gap-4 mx-1">
             <div className="flex gap-3 justify-center text-white text-lg flex-wrap">
               {currentRun.map((r, index) => (
                 <h5

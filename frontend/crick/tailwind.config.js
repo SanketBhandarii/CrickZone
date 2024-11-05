@@ -6,7 +6,8 @@ export default {
       screens: {
         scrn1: "847px",
         scrn2: "728px",
-        scrn3: "398px", // Defines a custom screen size at a minimum width of 847px
+        scrn3: "398px",
+        scrn4: "640px"
       },
       backgroundColor: {
         "bg-clr1": "#0f2f56",
