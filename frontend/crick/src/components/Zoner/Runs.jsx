@@ -50,7 +50,7 @@ function Runs() {
       setAud(true);
       setTimeout(() => {
         setAud(false);
-      }, 9020);
+      }, 6080);
     }
   }, [currentRun, setCurrentRun, run, setRun]);
 
