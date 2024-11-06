@@ -78,7 +78,7 @@ const Header = () => {
           <NavLink to="/about" onClick={toggleMenu}>
             <li className="cursor-pointer py-2 px-2">About Us</li>
           </NavLink>
-          <NavLink to="/about" onClick={toggleMenu}>
+          <NavLink to="/reviews" onClick={toggleMenu}>
             <li className="cursor-pointer py-2 px-2">Reviews</li>
           </NavLink>
           <button
