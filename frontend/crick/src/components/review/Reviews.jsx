@@ -9,7 +9,7 @@ const Reviews = () => {
     {
       id: 1,
       name: "Amit Sharma",
-      videoUrl: "https://www.youtube.com/embed/your_video_id_1",
+      videoUrl: "https://www.youtube.com/embed/5JYJlQpni6o?si=I4GVFawjKrK-WBxf",
       title: "CrickZone Changed My Game!",
       description:
         "Using CrickZone has brought a new level of excitement to our local matches. The live score tracking and voice recognition are amazing!",

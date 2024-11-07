@@ -48,7 +48,7 @@ const LiveMatch = () => {
         </button>
       </div>
 
-      <div className="w-full max-w-screen-lg p-6 sm:p-8 bg-gray-900 rounded-lg shadow-lg mt-16">
+      <div className="w-full max-w-screen-lg p-6 sm:p-8 bg-gray-900 rounded-lg shadow-lg mt-4">
         <h2 className="text-xl sm:text-2xl font-bold text-white text-center mb-4">Top Cricket Headlines</h2>
         {loading ? (
           <p className="text-center text-gray-400">Loading...</p>
