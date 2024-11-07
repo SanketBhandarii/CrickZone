@@ -40,8 +40,6 @@ const Reviews = () => {
     },
   ];
 
-  // Custom Arrow Components
-  // Custom Arrow Components
   const NextArrow = ({ onClick }) => (
     <div
       className="absolute right-4 top-1/2 transform -translate-y-1/2 translate-x-1/2 z-10 cursor-pointer bg-slate-600 hover:bg-slate-600 rounded-full p-3 m-2"
@@ -84,6 +82,21 @@ const Reviews = () => {
         },
       },
     ],
+    appendDots: (dots) => (
+      <div>
+        <ul style={{ transform: "translateY(10px)" }}> {dots} </ul>
+      </div>
+    ),
+    customPaging: () => (
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          background: "white",
+          borderRadius: "50%",
+        }}
+      />
+    ),
   };
 
   return (
