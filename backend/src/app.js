@@ -17,7 +17,11 @@ app.use(cookieParser());
 // CORS configuration
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://crick-zone.vercel.app"],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:5173",
+      "https://crick-zone.vercel.app",
+    ],
     credentials: true,
   })
 );
