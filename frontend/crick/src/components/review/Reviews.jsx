@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
 import vd1 from "../../assets/vd-1.mp4";
 import vd2 from "../../assets/vd-2.mp4";
 import vd3 from "../../assets/vd-3.mp4";
@@ -13,6 +13,9 @@ import { useNavigate } from "react-router-dom";
 
 const Reviews = () => {
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedVideoUrl, setSelectedVideoUrl] = useState(null);
+
   const reviews = [
     {
       id: 1,
@@ -23,7 +26,6 @@ const Reviews = () => {
       description:
         "Using CrickZone has brought a new level of excitement to our local matches. The live score tracking and voice recognition are amazing!",
     },
-
     {
       id: 2,
       name: "Rahul Verma",
@@ -38,7 +40,6 @@ const Reviews = () => {
       name: "Akash Gupta",
       videoUrl: vd2,
       thumbnail: user2,
-
       title: "A Game Changer for Cricket Fans",
       description:
         "Now I can easily follow all our club matches! CrickZone makes everything more engaging and professional.",
@@ -54,12 +55,18 @@ const Reviews = () => {
     },
   ];
 
-  const openVideoInNewTab = (videoUrl) => {
+  const openVideoModal = (videoUrl) => {
     if (videoUrl == null) {
       navigate("/reviews");
       return;
     }
-    window.open(videoUrl, "_blank");
+    setSelectedVideoUrl(videoUrl);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedVideoUrl(null);
   };
 
   const NextArrow = ({ onClick }) => (
@@ -122,7 +129,7 @@ const Reviews = () => {
             <div key={review.id} className="px-4">
               <div
                 className="bg-gray-800 shadow-lg rounded-lg p-6 flex flex-col items-center cursor-pointer"
-                onClick={() => openVideoInNewTab(review.videoUrl)}
+                onClick={() => openVideoModal(review.videoUrl)}
               >
                 <div
                   className="w-full h-48 bg-cover bg-center rounded-lg mb-4"
@@ -144,6 +151,25 @@ const Reviews = () => {
           ))}
         </Slider>
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="relative bg-black p-4 max-w-3xl w-full rounded-lg">
+            <button
+              className="absolute top-4 left-4 text-white bg-yellow-700 p-3 rounded-full text-2xl cursor-pointer z-20"
+              onClick={closeModal}
+            >
+              <FaTimes />
+            </button>
+            <video
+              src={selectedVideoUrl}
+              controls
+              autoPlay
+              className="w-full max-h-[70vh] object-contain rounded-lg"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
