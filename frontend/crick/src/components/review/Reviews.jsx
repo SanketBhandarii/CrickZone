@@ -166,7 +166,6 @@ const Reviews = () => {
               src={selectedVideoUrl}
               controls
               autoPlay
-              preload="auto"
               className="w-full max-h-[70vh] object-contain rounded-lg"
             />
           </div>
