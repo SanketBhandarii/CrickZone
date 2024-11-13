@@ -24,7 +24,7 @@ const Reviews = () => {
     {
       id: 1,
       name: "Amit Sharma",
-      videoUrl: vd1,
+      videoUrl: "https://res.cloudinary.com/dyrmawqcn/video/upload/v1731517544/vd-1_ec8uuq.mp4",
       thumbnail: user1,
       title: "CrickZone Changed My Game!",
       description:
@@ -33,7 +33,7 @@ const Reviews = () => {
     {
       id: 2,
       name: "Rahul Verma",
-      videoUrl: vd3,
+      videoUrl: "https://res.cloudinary.com/dyrmawqcn/video/upload/v1731517582/vd-3_ofem9n.mp4",
       thumbnail: user3,
       title: "Perfect for Tournament Organizers",
       description:
@@ -42,7 +42,7 @@ const Reviews = () => {
     {
       id: 3,
       name: "Akash Gupta",
-      videoUrl: vd2,
+      videoUrl: "https://res.cloudinary.com/dyrmawqcn/video/upload/v1731517580/vd-2_unh1y8.mp4",
       thumbnail: user2,
       title: "A Game Changer for Cricket Fans",
       description:
@@ -61,7 +61,6 @@ const Reviews = () => {
 
   const openVideoModal = (videoUrl) => {
     if (videoUrl == null) {
-      navigate("/reviews");
       return;
     }
     setSelectedVideoUrl(videoUrl);
