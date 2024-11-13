@@ -3,13 +3,18 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
-import vd1 from "/videos/vd-1.mp4";
-import vd2 from "/videos/vd-2.mp4";
-import vd3 from "/videos/vd-3.mp4";
+// import vd1 from "/videos/vd-1.mp4";
+// import vd2 from "/videos/vd-2.mp4";
+// import vd3 from "/videos/vd-3.mp4";
 import user1 from "../../assets/user1.png";
 import user2 from "../../assets/user2.png";
 import user3 from "../../assets/user3.png";
 import { useNavigate } from "react-router-dom";
+
+const vd1 = "/videos/vd-1.mp4";
+const vd2 = "/videos/vd-2.mp4";
+const vd3 = "/videos/vd-3.mp4";
+
 
 const Reviews = () => {
   const navigate = useNavigate();
