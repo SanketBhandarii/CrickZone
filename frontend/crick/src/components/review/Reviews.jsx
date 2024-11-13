@@ -15,7 +15,6 @@ const vd1 = "/videos/vd-1.mp4";
 const vd2 = "/videos/vd-2.mp4";
 const vd3 = "/videos/vd-3.mp4";
 
-
 const Reviews = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -165,15 +164,15 @@ const Reviews = () => {
               onClick={closeModal}
             >
               <FaTimes />
-
             </button>
             <video
-              src={selectedVideoUrl}
               controls
               autoPlay
               className="w-full max-h-[70vh] object-contain rounded-lg"
-              type="video/mp4"
-            />
+            >
+              <source src={selectedVideoUrl} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       )}
