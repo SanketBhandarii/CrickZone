@@ -160,9 +160,10 @@ const Reviews = () => {
               onClick={closeModal}
             >
               <FaTimes />
+
             </button>
             <video
-              src={selectedVideoUrl}
+              src={vd1}
               controls
               autoPlay
               className="w-full max-h-[70vh] object-contain rounded-lg"
