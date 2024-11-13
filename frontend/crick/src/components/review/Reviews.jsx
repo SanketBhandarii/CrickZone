@@ -21,7 +21,7 @@ const Reviews = () => {
       id: 1,
       name: "Amit Sharma",
       videoUrl: vd1,
-      thumbnail: user1,
+      thumbnail: "/videos/vd-1.mp4",
       title: "CrickZone Changed My Game!",
       description:
         "Using CrickZone has brought a new level of excitement to our local matches. The live score tracking and voice recognition are amazing!",
@@ -29,7 +29,7 @@ const Reviews = () => {
     {
       id: 2,
       name: "Rahul Verma",
-      videoUrl: vd3,
+      videoUrl: "/videos/vd-3.mp4",
       thumbnail: user3,
       title: "Perfect for Tournament Organizers",
       description:
@@ -38,7 +38,7 @@ const Reviews = () => {
     {
       id: 3,
       name: "Akash Gupta",
-      videoUrl: vd2,
+      videoUrl: "/videos/vd-2.mp4",
       thumbnail: user2,
       title: "A Game Changer for Cricket Fans",
       description:
