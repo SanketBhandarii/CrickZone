@@ -3,9 +3,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
-import vd1 from "../../../public/videos/vd-1.mp4";
-import vd2 from "../../../public/videos/vd-2.mp4";
-import vd3 from "../../../public/videos/vd-3.mp4";
+import vd1 from "/videos/vd-1.mp4";
+import vd2 from "/videos/vd-2.mp4";
+import vd3 from "/videos/vd-3.mp4";
 import user1 from "../../assets/user1.png";
 import user2 from "../../assets/user2.png";
 import user3 from "../../assets/user3.png";
@@ -20,7 +20,7 @@ const Reviews = () => {
     {
       id: 1,
       name: "Amit Sharma",
-      videoUrl: "../../assets/vd-1.mp4",
+      videoUrl: vd1,
       thumbnail: user1,
       title: "CrickZone Changed My Game!",
       description:
@@ -29,7 +29,7 @@ const Reviews = () => {
     {
       id: 2,
       name: "Rahul Verma",
-      videoUrl: "../../assets/vd-3.mp4",
+      videoUrl: vd3,
       thumbnail: user3,
       title: "Perfect for Tournament Organizers",
       description:
@@ -38,7 +38,7 @@ const Reviews = () => {
     {
       id: 3,
       name: "Akash Gupta",
-      videoUrl: "../../assets/vd-2.mp4",
+      videoUrl: vd2,
       thumbnail: user2,
       title: "A Game Changer for Cricket Fans",
       description:
