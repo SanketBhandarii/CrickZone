@@ -163,7 +163,7 @@ const Reviews = () => {
 
             </button>
             <video
-              src={selectedVideoUrl}
+              src={vd1}
               controls
               autoPlay
               preload="auto"
