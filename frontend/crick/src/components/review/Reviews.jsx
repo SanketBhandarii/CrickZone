@@ -172,6 +172,7 @@ const Reviews = () => {
               controls
               autoPlay
               className="w-full max-h-[70vh] object-contain rounded-lg"
+              type="video/mp4"
             />
           </div>
         </div>
