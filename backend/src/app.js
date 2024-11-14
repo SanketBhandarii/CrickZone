@@ -4,17 +4,15 @@ import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import router from "./routes/userRoutes.js";
 import matchRouter from "./routes/matchRoutes.js";
-import path from "path"; // Import Path module for file paths
-import { fileURLToPath } from "url"; // To resolve the __dirname
+import path from "path";
+import { fileURLToPath } from "url";
 import googleRouter from "./routes/googleRoutes.js";
 
-// Helper to get __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(cookieParser());
-// CORS configuration
 app.use(
   cors({
     origin: [

@@ -3,8 +3,6 @@ import { User } from "../models/userModel.js";
 import { randomUUID } from "crypto";
 import { generateTokenAndRespond } from "../utils/generateTokenAndRespond.js";
 
-
-
 export const googleLogin = async (req, res) => {
   const { username, googleEmail } = req.body;
 
@@ -21,7 +19,6 @@ export const googleLogin = async (req, res) => {
       return generateTokenAndRespond(user, res);
     }
 
-    // Create a new user
     user = await User.create({
       username,
       email: googleEmail,

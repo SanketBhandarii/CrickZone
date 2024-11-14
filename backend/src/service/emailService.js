@@ -1,10 +1,11 @@
-import { config } from "dotenv";
-
-config({
-  path: "src/config/.env",
-});
+import dotenv from "dotenv";
 
 import nodemailer from "nodemailer";
+dotenv.config({
+  path: "././.env",
+});
+
+console.log(process.env.EMAIL_USER);
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -21,7 +22,7 @@ export const sendVerificationEmail = async (email, verificationIdentifier) => {
 
   try {
     await transporter.sendMail({
-      from: "THECEO@CrickZone.com",
+      from: process.env.EMAIL_USER,
       to: email,
       subject: "Welcome to CrickZone - Verify Your Email",
       html: `<p>Click the link below to verify your email:</p>
@@ -32,5 +33,4 @@ export const sendVerificationEmail = async (email, verificationIdentifier) => {
     console.error("Error sending verification email:", error);
     return false;
   }
-  
 };

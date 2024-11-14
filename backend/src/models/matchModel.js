@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-// Define the schema for the match
+
 const matchSchema = new mongoose.Schema({
   date: {
     type: String,
-    required: true, // Date in a human-readable format
+    required: true, 
   },
   over : {
     type: Number,
@@ -11,17 +11,16 @@ const matchSchema = new mongoose.Schema({
   },
   teams: {
     type: String,
-    required: true, // E.g., "Team A vs Team B"
+    required: true,
   },
   result: {
     type: String,
-    required: true, // E.g., "Team A won by 4 wickets"
+    required: true, 
   },
   location: {
     type: String,
-    required: true, // Location of the match, e.g., "Mumbai"
+    required: true, 
   },
 });
 
-// Create the model from the schema
 export const Match = mongoose.model("Match", matchSchema);
