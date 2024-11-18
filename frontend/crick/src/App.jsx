@@ -32,18 +32,14 @@ function App() {
       } catch (error) {
         console.error("Error during authentication check:", error);
         navigate("/login");
+      }finally{
+        setTimeout(() => {
+          setLoading(false);
+        }, 2137);
       }
     }
-    if (firstVisit === null) {
-      sessionStorage.setItem("firstVisit", true);
-      setTimeout(() => {
-        setLoading(false);
-      }, 3000);
-    } else {  
-      setLoading(false);
-    }
     getAuth();
-  }, [navigate, firstVisit]);
+  }, [navigate]);
 
   useEffect(() => {
     toast(
