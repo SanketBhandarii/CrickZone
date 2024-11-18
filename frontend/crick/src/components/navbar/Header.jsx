@@ -98,7 +98,7 @@ const Header = () => {
         </NavLink>
         <NavLink to="/features">Features</NavLink>
         <NavLink to="/about">About Us</NavLink>
-        <NavLink to="/reviews" className="bg-orange-700 px-2 py-2 rounded-md">
+        <NavLink to="/reviews" className="bg-orange-700 hover:bg-orange-800 transition duration-300 px-2 py-2 rounded-md">
           Reviews
         </NavLink>
         <button

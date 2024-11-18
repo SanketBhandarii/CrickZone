@@ -11,9 +11,10 @@ function App() {
   const { timeToShowHeader } = useContext(Context);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-
+  const firstVisit = sessionStorage.getItem("firstVisit");
   useEffect(() => {
     localStorage.clear();
+
     async function getAuth() {
       try {
         const response = await axios.get(
@@ -31,14 +32,18 @@ function App() {
       } catch (error) {
         console.error("Error during authentication check:", error);
         navigate("/login");
-      } finally {
-        setTimeout(() => {
-          setLoading(false);
-        }, 1210);
       }
     }
+    if (firstVisit === null) {
+      sessionStorage.setItem("firstVisit", true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+    } else {  
+      setLoading(false);
+    }
     getAuth();
-  }, [navigate]);
+  }, [navigate, firstVisit]);
 
   useEffect(() => {
     toast(
@@ -63,8 +68,8 @@ function App() {
     <Intro />
   ) : (
     <div className="min-h-screen bg-slate-800 flex justify-center items-center px-3 as">
-      {timeToShowHeader ? <Header /> : null} {/* Conditionally render header */}
-      <Outlet /> {/* Render child routes */}
+      {timeToShowHeader ? <Header /> : null}
+      <Outlet />
       <ToastContainer />
     </div>
   );

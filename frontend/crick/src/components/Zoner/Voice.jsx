@@ -18,15 +18,15 @@ function Voice() {
     setMatchWinner,
     setWicket,
     inning,
-    setCurrentWicket, // Add this if you need to manage current wickets separately
+    setCurrentWicket,
   } = useContext(Context);
 
-  const [isListening, setIsListening] = useState(false); // State to track if we're listening
+  const [isListening, setIsListening] = useState(false); 
   const [transcript, setTranscript] = useState("");
   const [showInfo, setShowInfo] = useState(false); // State to store the recognized text
 
   useEffect(() => {
-    // Check if the browser supports the Web Speech API
+    
     if (!("webkitSpeechRecognition" in window)) {
       alert("Web Speech API is not supported in this browser.");
       return;

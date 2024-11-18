@@ -18,6 +18,7 @@ function TeamInput() {
   } = useContext(Context);
   const [user, setUser] = useState(null);
   const [message, setMessage] = useState("");
+ 
 
   useEffect(() => {
     localStorage.clear();

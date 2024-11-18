@@ -19,7 +19,7 @@ function Winner() {
   useEffect(() => {
     const t1name = localStorage.getItem("t1name");
     setTossWinner("");
-
+    localStorage.clear();
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleDateString("en-US", {
       year: "numeric",
