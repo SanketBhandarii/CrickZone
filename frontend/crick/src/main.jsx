@@ -14,7 +14,6 @@ import About from "./components/about/About.jsx";
 import UserMatches from "./components/user-matches/UserMatches.jsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import VerifyEmail from "./components/verifyemail/VerifyEmail.jsx";
-import LiveScore from "./components/LiveScore.jsx";
 import LiveMatch from "./components/LiveScore.jsx";
 import Reviews from "./components/review/Reviews.jsx";
 
