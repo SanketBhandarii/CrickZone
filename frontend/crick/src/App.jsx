@@ -11,7 +11,9 @@ function App() {
   const { timeToShowHeader } = useContext(Context);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  // const firstVisit = sessionStorage.getItem("firstVisit");
+
+  const LOADER_DELAY = 2700;
+
   useEffect(() => {
     localStorage.clear();
 
@@ -19,14 +21,10 @@ function App() {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/home`,
-          {
-            withCredentials: true,
-          }
+          { withCredentials: true }
         );
 
-        if (response.data.msg !== "Please do login!") {
-          return;
-        } else {
+        if (response.data.msg === "Please do login!") {
           navigate("/login");
         }
       } catch (error) {
@@ -35,19 +33,10 @@ function App() {
       } finally {
         setTimeout(() => {
           setLoading(false);
-        }, 2700);
+        }, LOADER_DELAY);
       }
     }
-    // if (navigate) {
-    //   if (!firstVisit) {
-    //     sessionStorage.setItem("firstVisit", true);
-    //     setTimeout(() => {
-    //       setLoading(false);
-    //     }, 3000);
-    //   } else {
-    //     setLoading(false);
-    //   }
-    // }
+
     getAuth();
   }, [navigate]);
 
