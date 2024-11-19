@@ -19,6 +19,7 @@ function TeamInput() {
   const [user, setUser] = useState(null);
   const [message, setMessage] = useState("");
  
+
   useEffect(() => {
     localStorage.clear();
     async function getAuth() {
@@ -29,6 +30,8 @@ function TeamInput() {
             withCredentials: true,
           }
         );
+        console.log(response);
+        
         if (response.data.msg !== "Please do login!") {
           setUser(response.data.username);
           setTimeToShowHeader(true);
