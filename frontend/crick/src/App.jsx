@@ -32,8 +32,6 @@ function App() {
       } catch (error) {
         console.error("Error during authentication check:", error);
         navigate("/login");
-      } finally{
-       setLoading(false)
       }
     }
     if (!firstVisit) {
@@ -41,7 +39,7 @@ function App() {
       setTimeout(() => {
         setLoading(false);
       }, 3000);
-    } else {  
+    } else {
       setLoading(false);
     }
     getAuth();
