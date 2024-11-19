@@ -11,7 +11,7 @@ function App() {
   const { timeToShowHeader } = useContext(Context);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  // const firstVisit = sessionStorage.getItem("firstVisit");
+  const firstVisit = sessionStorage.getItem("firstVisit");
   useEffect(() => {
     localStorage.clear();
 
@@ -33,13 +33,17 @@ function App() {
         console.error("Error during authentication check:", error);
         navigate("/login");
       } finally {
-        setTimeout(() => {
+        // Manage loading based on first visit
+        if (!firstVisit) {
+          sessionStorage.setItem("firstVisit", "true");
+          setTimeout(() => setLoading(false), 3000);
+        } else {
           setLoading(false);
-        }, 2170);
+        }
       }
     }
     getAuth();
-  }, [navigate]);
+  }, [navigate, firstVisit]);
 
   useEffect(() => {
     toast(
