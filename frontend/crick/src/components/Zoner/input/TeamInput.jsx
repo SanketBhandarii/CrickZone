@@ -19,7 +19,6 @@ function TeamInput() {
   const [user, setUser] = useState(null);
   const [message, setMessage] = useState("");
  
-
   useEffect(() => {
     localStorage.clear();
     async function getAuth() {
