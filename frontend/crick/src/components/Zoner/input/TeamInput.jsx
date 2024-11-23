@@ -18,7 +18,6 @@ function TeamInput() {
   } = useContext(Context);
   const [user, setUser] = useState(null);
   const [message, setMessage] = useState("");
- 
 
   useEffect(() => {
     localStorage.clear();
@@ -31,7 +30,7 @@ function TeamInput() {
           }
         );
         console.log(response);
-        
+
         if (response.data.msg !== "Please do login!") {
           setUser(response.data.username);
           setTimeToShowHeader(true);
