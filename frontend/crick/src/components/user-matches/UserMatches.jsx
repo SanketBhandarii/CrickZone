@@ -35,7 +35,7 @@ function UserMatches() {
       setMatches(newMatches);
       try {
         const response = await axios.post(
-          `http://localhost:8000/match/deleteMatch`,
+          `${import.meta.env.VITE_BACKEND_URL}/match/deleteMatch`,
           { matchId },
           { withCredentials: true }
         );
