@@ -26,14 +26,14 @@ const router = createBrowserRouter([
         path: "/",
         element: <TeamInput />,
       },
-      // {
-      //   path: "/login",
-      //   element: <Login />,
-      // },
-      // {
-      //   path: "/signup",
-      //   element: <SignUp />,
-      // },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
 
       {
         path: "/toss",
@@ -50,18 +50,18 @@ const router = createBrowserRouter([
     
     ],
   },
-  // {
-  //   path: "/verifyEmail/:token",
-  //   element: <VerifyEmail />,
-  // },
+  {
+    path: "/verifyEmail/:token",
+    element: <VerifyEmail />,
+  },
   {
     path: "/features",
     element: <Features />,
   },
-  // {
-  //   path: "/usermatches",
-  //   element: <UserMatches />,
-  // },
+  {
+    path: "/usermatches",
+    element: <UserMatches />,
+  },
   {
     path : "/currentnews",
     element : <LiveMatch/>
