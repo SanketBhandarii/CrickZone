@@ -81,15 +81,15 @@ const Header = () => {
           <NavLink
             to="/reviews"
             onClick={toggleMenu}
-            className="bg-orange-700 hover:bg-orange-800 transition duration-300 px-2 py-2 rounded-md"
+            className="text-white p-2 rounded-lg bg-orange-700 hover:bg-orange-700 transition duration-300"
           >
-            <li className="cursor-pointer py-2 px-2">Reviews</li>
+            <li className="cursor-pointer px-1">Reviews</li>
           </NavLink>
           <button
             onClick={logout}
-            className="flex items-center text-black text-lg gap-2 p-2 rounded-lg bg-lime-400 hover:bg-lime-600 transition duration-300"
+            className="text-black p-2 rounded-lg bg-lime-400 hover:bg-lime-600 transition duration-300"
           >
-            <p>Logout</p>
+            <p className="px-1 text-left">Logout</p>
           </button>
         </ul>
       </div>
