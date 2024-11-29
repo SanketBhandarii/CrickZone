@@ -8,11 +8,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const { timeToShowHeader } = useContext(Context);
-  const [loading, setLoading] = useState(true);
+  const { timeToShowHeader, setTimeToShowHeader, user, setUser } =
+    useContext(Context);
+  const [loading, setLoading] = useState(sessionStorage.getItem("firstTime"));
   const navigate = useNavigate();
-
-  const LOADER_DELAY = 2700;
+  const LOADER_DELAY = 2350;
 
   useEffect(() => {
     localStorage.clear();
@@ -26,14 +26,22 @@ function App() {
 
         if (response.data.msg === "Please do login!") {
           navigate("/login");
+        } else {
+          setUser(response.data.username);
+          setTimeToShowHeader(true);
         }
       } catch (error) {
         console.error("Error during authentication check:", error);
         navigate("/login");
       } finally {
-        setTimeout(() => {
+        if (sessionStorage.getItem("firstTime") == null) {
+          setTimeout(() => {
+            setLoading(false);
+          }, LOADER_DELAY);
+          sessionStorage.setItem("firstTime", false);
+        } else {
           setLoading(false);
-        }, LOADER_DELAY);
+        }
       }
     }
 
@@ -59,9 +67,11 @@ function App() {
     );
   }, []);
 
-  return loading ? (
-    <Intro />
-  ) : (
+  if (loading == null) {
+    return <Intro />;
+  }
+
+  return (
     <div className="min-h-screen bg-slate-800 flex justify-center items-center px-3 as">
       {timeToShowHeader ? <Header /> : null}
       <Outlet />

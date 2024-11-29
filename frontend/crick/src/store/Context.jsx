@@ -16,6 +16,7 @@ const ContextProvider = ({ children }) => {
   const [teamInfo, setTeamInfo] = useState(false);
   const [tossWinner, setTossWinner] = useState("");
   const [matchWinner, setMatchWinner] = useState(null);
+  const [user, setUser] = useState();
   const [timeToShowHeader, setTimeToShowHeader] = useState(
     localStorage.getItem("timeToShowHeader") === "true"
   );
@@ -52,6 +53,8 @@ const ContextProvider = ({ children }) => {
     setTimeToShowHeader,
     setUserMatchInfo,
     userMatchInfo,
+    user,
+    setUser
   };
 
   useEffect(() => {

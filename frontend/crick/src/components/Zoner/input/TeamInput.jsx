@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Context } from "../../../store/Context";
+import ContextProvider, { Context } from "../../../store/Context";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import tp from "../../../assets/tp.mp3";
@@ -11,38 +11,36 @@ function TeamInput() {
     setT2name,
     t1name,
     t2name,
-    over,
     setOver,
     setTeamInfo,
-    setTimeToShowHeader,
+    user
   } = useContext(Context);
-  const [user, setUser] = useState(null);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
     localStorage.clear();
-    async function getAuth() {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/home`,
-          {
-            withCredentials: true,
-          }
-        );
-        console.log(response);
+    // async function getAuth() {
+    //   try {
+    //     const response = await axios.get(
+    //       `${import.meta.env.VITE_BACKEND_URL}/api/home`,
+    //       {
+    //         withCredentials: true,
+    //       }
+    //     );
+    //     console.log(response);
 
-        if (response.data.msg !== "Please do login!") {
-          setUser(response.data.username);
-          setTimeToShowHeader(true);
-          return;
-        } else {
-          navigate("/login");
-        }
-      } catch (error) {
-        console.error("Error during authentication check:", error);
-      }
-    }
-    getAuth();
+    //     if (response.data.msg !== "Please do login!") {
+    //       setUser(response.data.username);
+    //       setTimeToShowHeader(true);
+    //       return;
+    //     } else {
+    //       navigate("/login");
+    //     }
+    //   } catch (error) {
+    //     console.error("Error during authentication check:", error);
+    //   }
+    // }
+    // getAuth();
   }, []); // Add user as dependency to trigger rerender on user change
 
   useEffect(() => {
