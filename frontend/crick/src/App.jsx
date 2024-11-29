@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   const { timeToShowHeader, setTimeToShowHeader, user, setUser } =
     useContext(Context);
-  const [loading, setLoading] = useState(null);
+  const [loading, setLoading] = useState(sessionStorage.getItem("firstTime"));
   const navigate = useNavigate();
   const LOADER_DELAY = 2700;
 
