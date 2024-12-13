@@ -5,8 +5,6 @@ dotenv.config({
   path: "././.env",
 });
 
-console.log(process.env.EMAIL_USER);
-
 const transporter = nodemailer.createTransport({
   service: "gmail",
   secure: true,
