@@ -12,6 +12,7 @@ export default {
       backgroundColor: {
         "bg-clr1": "#0f2f56",
         "bg-clr2": "#1d2756",
+        "landing-page-bg" : "#121a21"
       },
       colors: {
         "t-clr1": "#1d2756",
