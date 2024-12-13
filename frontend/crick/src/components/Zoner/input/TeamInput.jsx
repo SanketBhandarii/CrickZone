@@ -96,7 +96,7 @@ function TeamInput() {
           </h2>
           <input
             type="text"
-            placeholder="Team 1"
+            placeholder="Enter team-1 name"
             onChange={(event) => setT1name(event.target.value)}
             minLength="2"
             maxLength="20"
@@ -105,7 +105,7 @@ function TeamInput() {
           />
           <input
             type="text"
-            placeholder="Team 2"
+            placeholder="Enter team-2 name"
             onChange={(event) => setT2name(event.target.value)}
             minLength="2"
             maxLength="20"
@@ -114,7 +114,7 @@ function TeamInput() {
           />
           <input
             type="number"
-            placeholder="Overs"
+            placeholder="No. of overs"
             onChange={(event) => setOver(event.target.value)}
             max="50"
             min="1"
