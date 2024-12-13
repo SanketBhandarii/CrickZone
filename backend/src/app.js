@@ -31,6 +31,10 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 
 app.use(helmet());
 
+app.get("/",(req, res) => {
+  res.send("Hello, Backend of crickzone")
+})
+
 app.use("/api", router);
 app.use("/match", matchRouter);
 app.use("/api2", googleRouter);
