@@ -14,40 +14,45 @@ import About from "./components/about/About.jsx";
 import UserMatches from "./components/user-matches/UserMatches.jsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import VerifyEmail from "./components/verifyemail/VerifyEmail.jsx";
-import LiveMatch from "./components/LiveScore.jsx";
+import LiveMatch from "./components/CurrentNews.jsx";
 import Reviews from "./components/review/Reviews.jsx";
+import LandingPage from "./components/landingPage/LandingPage.jsx";
+import CurrentNews from "./components/CurrentNews.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <LandingPage />,
+  },
+  {
+    path: "/zone",
     element: <App />,
     children: [
       {
-        path: "/",
+        path: "",
         element: <TeamInput />,
       },
       {
-        path: "/login",
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/signup",
+        path: "signup",
         element: <SignUp />,
       },
 
       {
-        path: "/toss",
+        path: "toss",
         element: <TossCoin />,
       },
       {
-        path: "/toss/choosefor",
+        path: "toss/choosefor",
         element: <ChooseFor />,
       },
       {
-        path: "/play",
+        path: "play",
         element: <CrickContainer />,
       },
-    
     ],
   },
   {
@@ -63,8 +68,8 @@ const router = createBrowserRouter([
     element: <UserMatches />,
   },
   {
-    path : "/currentnews",
-    element : <LiveMatch/>
+    path: "/currentnews",
+    element: <CurrentNews />,
   },
   {
     path: "/about",

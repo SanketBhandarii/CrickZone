@@ -9,7 +9,7 @@ function TossCoin() {
 
   useEffect(() => {
     if (teamInfo === false) {
-      navigate("/");
+      navigate("/zone");
     }
     setTimeout(() => {
       const random = Math.floor(Math.random() * 2) + 1;

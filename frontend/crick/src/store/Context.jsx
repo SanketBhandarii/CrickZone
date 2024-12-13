@@ -17,9 +17,7 @@ const ContextProvider = ({ children }) => {
   const [tossWinner, setTossWinner] = useState("");
   const [matchWinner, setMatchWinner] = useState(null);
   const [user, setUser] = useState();
-  const [timeToShowHeader, setTimeToShowHeader] = useState(
-    localStorage.getItem("timeToShowHeader") === "true"
-  );
+  const [timeToShowHeader, setTimeToShowHeader] = useState(false);
 
   const [userMatchInfo, setUserMatchInfo] = useState([]);
   const values = {
@@ -54,7 +52,7 @@ const ContextProvider = ({ children }) => {
     setUserMatchInfo,
     userMatchInfo,
     user,
-    setUser
+    setUser,
   };
 
   useEffect(() => {

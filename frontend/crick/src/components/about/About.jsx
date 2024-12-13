@@ -7,7 +7,7 @@ const About = () => {
     <div className="bg-gradient-to-b from-cyan-900 to-gray-900 h-screen overflow-auto"> {/* Background gradient from cyan-900 to gray-900 */}
       <div className="absolute top-8 left-8">
         <button
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/zone")}
           className="flex items-center gap-2 text-white text-lg sm:text-xl"
         >
           <i className="fa-solid fa-circle-left text-3xl sm:text-3xl"></i>

@@ -34,7 +34,7 @@ function CrickContainer() {
 
   useEffect(() => {
     if (teamInfo === false) {
-      navigate("/");
+      navigate("/zone");
     }
     setCurrentOver(0);
     setRun(0);

@@ -15,34 +15,32 @@ function TeamInput() {
     setTeamInfo,
     setTimeToShowHeader,
     user,
+    setUser,
   } = useContext(Context);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
     localStorage.clear();
-    setTimeToShowHeader(true);
-    // async function getAuth() {
-    //   try {
-    //     const response = await axios.get(
-    //       `${import.meta.env.VITE_BACKEND_URL}/api/home`,
-    //       {
-    //         withCredentials: true,
-    //       }
-    //     );
-    //     console.log(response);
-
-    //     if (response.data.msg !== "Please do login!") {
-    //       setUser(response.data.username);
-    //       setTimeToShowHeader(true);
-    //       return;
-    //     } else {
-    //       navigate("/login");
-    //     }
-    //   } catch (error) {
-    //     console.error("Error during authentication check:", error);
-    //   }
-    // }
-    // getAuth();
+    async function getAuth() {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/home`,
+          {
+            withCredentials: true,
+          }
+        );
+        if (response.data.msg !== "Please do login!") {
+          setUser(response.data.username);
+          setTimeToShowHeader(true);
+          return;
+        } else {
+          navigate("/zone/login");
+        }
+      } catch (error) {
+        console.error("Error during authentication check:", error);
+      }
+    }
+    getAuth();
   }, []); // Add user as dependency to trigger rerender on user change
 
   useEffect(() => {

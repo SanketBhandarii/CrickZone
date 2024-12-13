@@ -8,8 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const { timeToShowHeader, setTimeToShowHeader, user, setUser } =
-    useContext(Context);
+  const { timeToShowHeader } = useContext(Context);
   const [loading, setLoading] = useState(sessionStorage.getItem("firstTime"));
   const navigate = useNavigate();
   const LOADER_DELAY = 2700;
@@ -21,18 +20,17 @@ function App() {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/home`,
-          { withCredentials: true }
+          {
+            withCredentials: true,
+          }
         );
-                     
+
         if (response.data.msg === "Please do login!") {
-          navigate("/login");
-        } else {
-          setUser(response.data.username);
-          setTimeToShowHeader(true);
+          navigate("/zone/login");
         }
       } catch (error) {
         console.error("Error during authentication check:", error);
-        navigate("/login");
+        navigate("/zone/login");
       } finally {
         if (sessionStorage.getItem("firstTime") == null) {
           setTimeout(() => {

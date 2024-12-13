@@ -80,7 +80,7 @@ function UserMatches() {
         <button className="flex items-center gap-2 text-white sm:text-xl">
           <i
             className="fa-solid fa-circle-left text-3xl sm:text-3xl"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/zone")}
           ></i>
           <span className="ml-2 text-xl">Your Previous Matches</span>
         </button>

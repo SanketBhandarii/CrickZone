@@ -42,7 +42,7 @@ function Login() {
         setTimeout(() => {
           setPassword("");
           setEmail("");
-          navigate("/");
+          navigate("/zone");
         }, 1500);
       } else {
         setPassword("");
@@ -73,7 +73,7 @@ function Login() {
           setTimeout(() => {
             setUsername("");
             setGoogleEmail("");
-            navigate("/");
+            navigate("/zone");
           }, 1500);
         } else {
           setUsername("");

@@ -10,7 +10,7 @@ function ChooseFor() {
 
   useEffect(() => {
     if (tossWinner === "" || !teamInfo) {
-      navigate("/");
+      navigate("/zone");
     }
   }, [tossWinner, teamInfo, navigate]);
 
