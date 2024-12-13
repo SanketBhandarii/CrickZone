@@ -13,12 +13,14 @@ function TeamInput() {
     t2name,
     setOver,
     setTeamInfo,
-    user
+    setTimeToShowHeader,
+    user,
   } = useContext(Context);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
     localStorage.clear();
+    setTimeToShowHeader(true);
     // async function getAuth() {
     //   try {
     //     const response = await axios.get(
