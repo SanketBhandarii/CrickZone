@@ -133,7 +133,7 @@ function UserMatches() {
 
       {isDeleteModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
-          <div className="relative bg-neutral-700 p-4 max-w-sm w-full rounded-lg">
+          <div className="relative bg-gradient-to-br from-gray-800 via-sky-900  p-4 max-w-sm w-full rounded-lg">
             <div className="text-white text-center p-4">
               <h3 className="text-lg font-semibold">
                 Are you sure you want to delete this match?
