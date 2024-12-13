@@ -35,7 +35,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 mt-2 left-0 w-full py-3 px-[10%] text-white flex justify-between items-center z-[100]">
-      <a className="text-2xl cursor-pointer flex items-center gap-3 text-white font-bold">
+      <a href="/" className="text-2xl cursor-pointer flex items-center gap-3 text-white font-bold">
         <img
           src={CrickLogo}
           className="w-12 rounded-full"
