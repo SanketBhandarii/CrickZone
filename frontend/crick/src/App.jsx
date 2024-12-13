@@ -23,7 +23,7 @@ function App() {
           `${import.meta.env.VITE_BACKEND_URL}/api/home`,
           { withCredentials: true }
         );
-
+                     
         if (response.data.msg === "Please do login!") {
           navigate("/login");
         } else {

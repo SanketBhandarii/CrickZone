@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { FaTimes } from "react-icons/fa";
 
 function UserMatches() {
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [selectedMatchId, setSelectedMatchId] = useState(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,23 +31,30 @@ function UserMatches() {
     fetchUserMatches();
   }, []);
 
-  const handleDelete = async (matchId) => {
-    const confirmation = window.confirm("Are sure you want to delete?");
-    if (confirmation) {
-      console.log("Delete match with ID:", matchId);
-      const newMatches = matches.filter((m) => m._id != matchId);
+  const openDeleteModal = (matchId) => {
+    setSelectedMatchId(matchId);
+    setIsDeleteModalOpen(true);
+  };
+
+  const closeDeleteModal = () => {
+    setIsDeleteModalOpen(false);
+    setSelectedMatchId(null);
+  };
+
+  const confirmDelete = async () => {
+    if (selectedMatchId) {
+      closeDeleteModal();
+      const newMatches = matches.filter((m) => m._id !== selectedMatchId);
       setMatches(newMatches);
       try {
-        const response = await axios.post(
+        await axios.post(
           `${import.meta.env.VITE_BACKEND_URL}/match/deleteMatch`,
-          { matchId },
+          { matchId: selectedMatchId },
           { withCredentials: true }
         );
       } catch (error) {
         console.log(error);
       }
-    } else {
-      return;
     }
   };
 
@@ -86,8 +97,8 @@ function UserMatches() {
                 className="flex-shrink-0 bg-gradient-to-br from-gray-800 to-gray-700 p-6 rounded-lg shadow-xl transition-transform duration-300 hover:shadow-2xl w-full sm:w-72 md:w-80 relative"
               >
                 <i
-                  class="fa-solid fa-circle-xmark absolute top-2 cursor-pointer right-2 text-yellow-200 text-3xl"
-                  onClick={() => handleDelete(match._id)}
+                  className="fa-solid fa-circle-xmark absolute top-2 cursor-pointer right-2 text-yellow-200 text-3xl"
+                  onClick={() => openDeleteModal(match._id)}
                 ></i>
 
                 <div className="flex justify-between mb-2 mt-6">
@@ -116,6 +127,32 @@ function UserMatches() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      )}
+
+      {isDeleteModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
+          <div className="relative bg-neutral-700 p-4 max-w-sm w-full rounded-lg">
+            <div className="text-white text-center p-4">
+              <h3 className="text-lg font-semibold">
+                Are you sure you want to delete this match?
+              </h3>
+              <div className="flex justify-between mt-4">
+                <button
+                  className="bg-red-500 text-white py-2 px-4 rounded-lg"
+                  onClick={confirmDelete}
+                >
+                  Yes, Delete
+                </button>
+                <button
+                  className="bg-gray-500 text-white py-2 px-4 rounded-lg"
+                  onClick={closeDeleteModal}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
