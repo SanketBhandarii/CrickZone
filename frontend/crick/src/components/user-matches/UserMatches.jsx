@@ -143,7 +143,7 @@ function UserMatches() {
                   className="bg-red-500 text-white py-2 px-4 rounded-lg"
                   onClick={confirmDelete}
                 >
-                  Yes, Delete
+                  Yes
                 </button>
                 <button
                   className="bg-gray-500 text-white py-2 px-4 rounded-lg"
