@@ -21,7 +21,7 @@ body {
 }
 
 .as {
-  background-image: url("../assets/crick-bg.png");
+  background:url("../assets/crick-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

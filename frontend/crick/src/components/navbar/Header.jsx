@@ -67,7 +67,7 @@ const Header = () => {
             <i className="fa-solid fa-circle-user text-4xl px-2"></i>
           </NavLink>
           <NavLink to="/" onClick={toggleMenu}>
-            <li className="cursor-pointer py-2 px-2 text-sky-400">Play 🥎</li>
+            <li className="cursor-pointer py-2 px-2 text-sky-400">Play</li>
           </NavLink>
           <NavLink to="/features" onClick={toggleMenu}>
             <li className="cursor-pointer py-2 px-2">Features</li>
@@ -95,13 +95,13 @@ const Header = () => {
       <nav className="relative text-lg text-white font-medium flex items-center space-x-6 max-scrn1:hidden">
         <NavLink to="/" className="text-sky-400 flex gap-2 items-center">
           Play
-          <i class="fa-solid fa-puzzle-piece text-lime-500 text-xl"></i>
+         
         </NavLink>
         <NavLink to="/features">Features</NavLink>
         <NavLink to="/about">About Us</NavLink>
         <NavLink
           to="/reviews"
-          className="bg-indigo-600 hover:bg-indigo-700 transition duration-300 px-2 py-2 rounded-md"
+          className="bg-indigo-500 hover:bg-indigo-600 transition duration-300 px-2 py-2 rounded-md"
         >
           Reviews
         </NavLink>
