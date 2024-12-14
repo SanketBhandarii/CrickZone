@@ -56,7 +56,7 @@ const CurrentNews = () => {
           Top Cricket Headlines
         </h2>
         {loading ? (
-          <p className="text-center text-gray-400">Loading...</p>
+          <p className="text-center text-gray-400">Loading..</p>
         ) : (
           <ul className="space-y-3 sm:space-y-4">
             {matchData.map((headline, index) => (
