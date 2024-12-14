@@ -24,7 +24,8 @@ const Reviews = () => {
     {
       id: 1,
       name: "Amit Sharma",
-      videoUrl: "https://res.cloudinary.com/dyrmawqcn/video/upload/v1731517544/vd-1_ec8uuq.mp4",
+      videoUrl:
+        "https://res.cloudinary.com/dyrmawqcn/video/upload/v1731517544/vd-1_ec8uuq.mp4",
       thumbnail: user1,
       title: "CrickZone Changed My Game!",
       description:
@@ -33,7 +34,8 @@ const Reviews = () => {
     {
       id: 2,
       name: "Rahul Verma",
-      videoUrl: "https://res.cloudinary.com/dyrmawqcn/video/upload/v1731517582/vd-3_ofem9n.mp4",
+      videoUrl:
+        "https://res.cloudinary.com/dyrmawqcn/video/upload/v1731517582/vd-3_ofem9n.mp4",
       thumbnail: user3,
       title: "Perfect for Tournament Organizers",
       description:
@@ -42,7 +44,8 @@ const Reviews = () => {
     {
       id: 3,
       name: "Akash Gupta",
-      videoUrl: "https://res.cloudinary.com/dyrmawqcn/video/upload/v1731517580/vd-2_unh1y8.mp4",
+      videoUrl:
+        "https://res.cloudinary.com/dyrmawqcn/video/upload/v1731517580/vd-2_unh1y8.mp4",
       thumbnail: user2,
       title: "A Game Changer for Cricket Fans",
       description:
@@ -117,7 +120,7 @@ const Reviews = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-cyan-900 to-gray-900 min-h-screen py-12 px-6 overflow-hidden">
+    <div className="bg-gradient-to-b from-gradient1 to-gradient2 min-h-screen py-12 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto text-center">
         <h1 className="text-4xl font-extrabold text-slate-200 mb-8">
           User Reviews

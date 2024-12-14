@@ -1,3 +1,5 @@
+import { m } from "framer-motion";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -7,17 +9,20 @@ export default {
         scrn1: "847px",
         scrn2: "728px",
         scrn3: "398px",
-        scrn4: "640px"
+        scrn4: "640px",
       },
       backgroundColor: {
         "bg-clr1": "#0f2f56",
         "bg-clr2": "#1d2756",
-        "landing-page-bg" : "#121a21"
+        "app-bg": "#121a21",
       },
       colors: {
         "t-clr1": "#1d2756",
-        "skyBlueStart": "#007adf",
-        "skyBlueEnd": "#00ecbc",
+        skyBlueStart: "#007adf",
+        skyBlueEnd: "#00ecbc",
+        gradient1: "#182336",
+        gradient2: "#16353e",
+        "app-bg": "#121a21",
       },
       height: {
         "height-1": "440px",

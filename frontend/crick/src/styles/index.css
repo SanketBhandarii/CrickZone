@@ -21,16 +21,14 @@ body {
 }
 
 .as {
-  background-image:
-    url("../assets/crick-bg.png");
+  background-image: url("../assets/crick-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-
 .intro {
-  background: linear-gradient(135deg, #164c61, #121a29);
+  background: linear-gradient(135deg, #182336, #16353e);
 }
 .introLogo {
   animation: logoAnimation 1.5s infinite ease-in-out forwards;

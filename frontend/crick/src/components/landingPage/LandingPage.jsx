@@ -10,7 +10,7 @@ function LandingPage() {
   }
 
   return (
-    <div className="bg-landing-page-bg text-white min-h-screen">
+    <div className="bg-gradient-to-b from-app-bg to-gradient2 text-white min-h-screen">
       <nav className="py-11 h-auto flex justify-around items-center gap-72 max-md:gap-32 max-sm:gap-20">
         <h1 className="text-3xl cursor-pointer font-extrabold bg-gradient-to-tr from-teal-400 via-blue-400 to-white bg-clip-text text-transparent">
           CrickZone
@@ -29,7 +29,7 @@ function LandingPage() {
           x: 0,
           transition: {
             duration: 3,
-          },  
+          },
         }}
         viewport={{ once: true }}
       >
@@ -47,6 +47,7 @@ function LandingPage() {
             onClick={handleNavigate}
           >
             Get Started
+            <i class="fa-solid fa-bolt ml-3"></i>
           </button>
         </div>
       </motion.div>

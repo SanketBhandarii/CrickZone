@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 const About = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-gradient-to-b from-cyan-900 to-gray-900 h-screen overflow-auto"> {/* Background gradient from cyan-900 to gray-900 */}
+    <div className="bg-gradient-to-b from-gradient1 to-gradient2 h-screen overflow-auto">
+      {" "}
+      {/* Background gradient from cyan-900 to gray-900 */}
       <div className="absolute top-8 left-8">
         <button
           onClick={() => navigate("/zone")}
@@ -18,7 +20,9 @@ const About = () => {
         <h1 className="text-4xl font-extrabold text-center text-slate-200 mb-8 mt-8">
           About CrickZone
         </h1>
-        <div className="bg-gray-800 shadow-lg rounded-lg p-6"> {/* Card background color */}
+        <div className="bg-slate-700 shadow-lg rounded-lg p-6">
+          {" "}
+          {/* Card background color */}
           <h2 className="text-2xl font-bold text-white mb-4">Our Mission</h2>
           <p className="text-gray-300 mb-6">
             At CrickZone, our mission is to revolutionize how cricket
@@ -27,7 +31,6 @@ const About = () => {
             game, making it accessible for everyone, from casual players to
             serious enthusiasts.
           </p>
-
           <h2 className="text-2xl font-bold text-white mb-4">What We Offer</h2>
           <ul className="list-disc list-inside mb-6 text-gray-300">
             <li>Real-time score updates</li>
@@ -38,7 +41,6 @@ const About = () => {
               tournament managers
             </li>
           </ul>
-
           <h2 className="text-2xl font-bold text-white mb-4">Our Values</h2>
           <p className="text-gray-300 mb-6">
             We believe in the spirit of sportsmanship, teamwork, and fair play.
@@ -47,7 +49,6 @@ const About = () => {
             system that updates scores only when the match umpire or tournament
             manager speaks, ensuring accuracy and engagement in the game.
           </p>
-
           <h2 className="text-2xl font-bold text-white mb-4">Join Us!</h2>
           <p className="text-gray-300 mb-6">
             Whether you're a player, coach, or fan, CrickZone welcomes you to be
