@@ -64,7 +64,7 @@ function TeamInput() {
     setMessage("");
     setTeamInfo(true);
     setTimeout(() => {
-      navigate("/toss");
+      navigate("/zone/toss");
     }, 300);
   }
 

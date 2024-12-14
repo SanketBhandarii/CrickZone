@@ -36,7 +36,7 @@ function ChooseFor() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     if (decision) {
-      navigate("/play");
+      navigate("/zone/play");
     } else {
       alert("Please select Batting or Bowling.");
     }

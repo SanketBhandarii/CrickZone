@@ -24,7 +24,7 @@ function TossCoin() {
       setTossWinner(t2name);
     }
     setTimeout(() => {
-      navigate("/toss/choosefor");
+      navigate("/zone/toss/choosefor");
     }, 400);
   }
 
