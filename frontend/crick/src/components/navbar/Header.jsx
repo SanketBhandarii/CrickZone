@@ -52,7 +52,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-bg-clr1 text-white transition-transform transform ${
+        className={`fixed top-0 left-0 h-full w-64 bg-neutral-800 text-white transition-transform transform ${
           showMenu ? "translate-x-0" : "-translate-x-full"
         } z-50 max-scrn1:block`}
       >
@@ -78,7 +78,7 @@ const Header = () => {
           <NavLink
             to="/reviews"
             onClick={toggleMenu}
-            className="text-white p-2 rounded-lg bg-orange-700 hover:bg-orange-700 transition duration-300"
+            className="text-white p-2 rounded-lg bg-sky-700 hover:bg-sky-700 transition duration-300"
           >
             <li className="cursor-pointer px-1">Reviews</li>
           </NavLink>
@@ -101,7 +101,7 @@ const Header = () => {
         <NavLink to="/about">About Us</NavLink>
         <NavLink
           to="/reviews"
-          className="bg-orange-700 hover:bg-orange-800 transition duration-300 px-2 py-2 rounded-md"
+          className="bg-indigo-600 hover:bg-indigo-700 transition duration-300 px-2 py-2 rounded-md"
         >
           Reviews
         </NavLink>
