@@ -35,10 +35,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 mt-2 left-0 w-full py-3 px-[10%] text-white flex justify-between items-center z-[100]">
-      <a
-        href="/zone"
-        className="text-2xl cursor-pointer flex items-center gap-3 text-white font-bold"
-      >
+      <a href="/zone" className="text-2xl cursor-pointer flex items-center gap-3 text-white font-bold">
         <img
           src={CrickLogo}
           className="w-12 rounded-full"
@@ -49,9 +46,7 @@ const Header = () => {
         </h1>
       </a>
       <i
-        className={`fa-solid fa-bars text-2xl hidden max-scrn1:block cursor-pointer ${
-          showMenu == true ? "hidden" : null
-        }`}
+        className="fa-solid fa-bars text-2xl hidden max-scrn1:block cursor-pointer"
         onClick={toggleMenu}
       ></i>
 
