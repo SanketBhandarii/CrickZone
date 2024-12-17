@@ -54,7 +54,7 @@ function LandingPage() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-7 px-5 pb-5">
-          <div className="max-w-xs bg-cyan-900 opacity-75 p-6 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
+          <div className="max-w-xs bg-cyan-900 p-6 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
             <h3 className="text-xl font-semibold text-teal-500 mb-4">
               Real-Time Score Updates
             </h3>
@@ -72,7 +72,7 @@ function LandingPage() {
               using our voice recognition system.
             </p>
           </div>
-          <div className="max-w-xs bg-cyan-900 opacity-75 p-6 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
+          <div className="max-w-xs bg-cyan-900 p-6 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
             <h3 className="text-xl font-semibold text-teal-500 mb-4">
               Dynamic Score Tracking
             </h3>
