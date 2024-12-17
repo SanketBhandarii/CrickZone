@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const About = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-gradient-to-b from-gradient1 to-gradient2 h-screen overflow-auto">
+    <div className="relative bg-gradient-to-b from-gradient1 to-gradient2 h-screen overflow-auto">
       {" "}
       {/* Background gradient from cyan-900 to gray-900 */}
       <div className="absolute top-8 left-8">
@@ -17,7 +17,7 @@ const About = () => {
         </button>
       </div>
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-extrabold text-center text-slate-200 mb-8 mt-8">
+        <h1 className="text-3xl font-extrabold text-center text-slate-200 mb-3 mt-10">
           About CrickZone
         </h1>
         <div className="bg-slate-700 shadow-lg rounded-lg p-6">
