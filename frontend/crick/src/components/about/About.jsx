@@ -57,7 +57,7 @@ const About = () => {
           </p>
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-10 text-center">
           <h3 className="text-xl font-semibold text-white mb-4">
             Get in Touch
           </h3>
