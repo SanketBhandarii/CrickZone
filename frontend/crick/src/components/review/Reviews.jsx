@@ -120,9 +120,9 @@ const Reviews = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gradient1 to-gradient2 min-h-screen py-12 px-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto text-center">
-        <h1 className="text-4xl font-extrabold text-slate-200 mb-8">
+    <div className="bg-gradient-to-b from-gradient1 to-gradient2 min-h-screen pt-12 px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto text-center mt-5">
+        <h1 className="text-4xl font-extrabold text-slate-200 mb-4">
           User Reviews
         </h1>
         <p className="text-lg text-gray-300 mb-12">

@@ -1,13 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 function LandingPage() {
   const navigate = useNavigate();
-
-  function handleNavigate() {
-    navigate("/zone");
-  }
 
   return (
     <div className="bg-gradient-to-b from-app-bg to-gradient2 text-white min-h-screen">
@@ -44,13 +40,12 @@ function LandingPage() {
             seamless management, and an effort from our side to ensure accuracy,
             fun, and fairness for all
           </p>
-          <button
-            className="px-8 py-3 text-lg font-bold bg-sky-600 text-white rounded-full transition-all duration-300 hover:bg-sky-700 hover:shadow-lg"
-            onClick={handleNavigate}
-          >
-            Get Started
-            <i class="fa-solid fa-bolt ml-3"></i>
-          </button>
+          <NavLink to="/zone">
+            <button className="px-8 py-3 text-lg font-bold bg-sky-600 text-white rounded-full transition-all duration-300 hover:bg-sky-700 hover:shadow-lg">
+              Get Started
+              <i class="fa-solid fa-bolt ml-3"></i>
+            </button>
+          </NavLink>
         </div>
 
         <div className="flex flex-wrap justify-center gap-7 px-5 pb-5">

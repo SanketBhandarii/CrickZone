@@ -101,7 +101,7 @@ const Header = () => {
         <NavLink to="/about">About Us</NavLink>
         <NavLink
           to="/reviews"
-          className="bg-blue-600 hover:bg-blue-700 transition duration-300 px-2 py-2 rounded-md"
+          className="bg-sky-500 hover:bg-sky-600 transition duration-300 px-2 py-2 rounded-md"
         >
           Reviews
         </NavLink>
