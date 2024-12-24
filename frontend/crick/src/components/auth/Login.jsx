@@ -73,7 +73,7 @@ function Login() {
           setTimeout(() => {
             setUsername("");
             setGoogleEmail("");
-            navigate("/zone");
+            navigate("/zone", { replace: true });
           }, 1500);
         } else {
           setUsername("");
