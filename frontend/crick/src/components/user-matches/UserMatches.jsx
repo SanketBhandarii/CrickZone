@@ -87,7 +87,12 @@ function UserMatches() {
       </div>
 
       {matches.length === 0 ? (
-        <div className="text-white text-lg">No matches found.</div>
+        <div className="text-white flex flex-col gap-2">
+          <span className="text-2xl"> No matches found.</span>
+          <span className="font-semibold text-3xl text-teal-500">
+            Start Playing
+          </span>
+        </div>
       ) : (
         <div className="flex flex-col w-full max-w-full px-4 mt-9 max-sm:px-2 overflow-auto">
           <div className="flex flex-wrap justify-center gap-4">
