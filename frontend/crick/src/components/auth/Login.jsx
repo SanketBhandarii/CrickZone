@@ -170,7 +170,7 @@ function Login() {
 
           <span className="text-sm flex text-neutral-800 font-bold">
             Don't have an account?
-            <NavLink className="pl-1 text-amber-600" to={"/signup"}>
+            <NavLink className="pl-1 text-amber-600" to={"/zone/signup"}>
               {" "}
               SignUp
             </NavLink>
