@@ -22,7 +22,7 @@ export const sendVerificationEmail = async (email, verificationIdentifier) => {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: email,
-      subject: "Welcome to CrickZone - Verify Your Email",
+      subject: "Welcome to CrickZone🏏 - Verify Your Email",
       html: `<p>Click the link below to verify your email:</p>
              <a href="${verificationLink}">${verificationLink}</a>`,
     });

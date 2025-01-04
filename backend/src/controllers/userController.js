@@ -25,7 +25,7 @@ export const login = async (req, res) => {
       });
       return;
     }
-    const comparedPassword = await bcrypt.compare(password, user.password);
+    const comparedPassword = bcrypt.compare(password, user.password);
     if (!comparedPassword) {
       res.json({
         msg: "Incorrect password or email",
@@ -121,7 +121,6 @@ export const verifyEmail = async (req, res) => {
 
 export const getUserMatches = async (req, res) => {
   const token = req.cookies.token;
-  
   if (!token) {
     return res
       .status(401)

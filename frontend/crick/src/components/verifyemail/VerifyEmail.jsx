@@ -26,7 +26,7 @@ const VerifyEmail = () => {
           Your email has been successfully verified.
         </p>
         <a
-          href="https://crick-zone.vercel.app/login"
+          href="https://crick-zone.vercel.app/zone/login"
           className="text-sky-400 underline hover:text-sky-500"
         >
           Back to login

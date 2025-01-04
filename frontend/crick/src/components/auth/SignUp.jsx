@@ -41,18 +41,12 @@ function SignUp() {
           ) {
             setTimeout(() => {
               setMsg("");
-              setUsername("");
-              setPassword("");
-              setEmail("");
-              navigate("/login");
+              navigate("/zone/login");
             }, 1500);
             return;
           } else {
             setTimeout(() => {
               setMsg("");
-              setUsername("");
-              setPassword("");
-              setEmail("");
             }, 3000);
           }
         } catch (e) {
@@ -100,7 +94,7 @@ function SignUp() {
             <span className="text-amber-900 text-center text-sm font-semibold">
               {errors.password}
             </span>
-          ) : null} 
+          ) : null}
           <input
             type="text"
             name="username"
@@ -116,7 +110,7 @@ function SignUp() {
             type="email"
             name="email"
             value={values.email}
-            placeholder="Email"
+            placeholder="Enter valid email"
             onChange={handleChange}
             onBlur={handleBlur}
             required
@@ -149,7 +143,7 @@ function SignUp() {
           </button>
           <span className="text-sm flex text-neutral-800 font-bold">
             Already have an account?
-            <NavLink className="pl-1 text-amber-600" to={"/login"}>
+            <NavLink className="pl-1 text-amber-600" to={"/zone/login"}>
               {" "}
               Login
             </NavLink>
