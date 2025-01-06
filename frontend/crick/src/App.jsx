@@ -52,7 +52,7 @@ function App() {
         Check out the latest news{" "}
         <NavLink
           to="/currentnews"
-          style={{ color: "lightblue", textDecoration: "underline" }}
+          style={{ color: "lightblue", textDecoration: "underline", cursor:"pointer"}}
         >
           here
         </NavLink>

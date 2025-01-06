@@ -7,25 +7,12 @@ const CurrentNews = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  const apiKey = import.meta.env.VITE_CRICKBUZZ_API_KEY;
+  const PROXY_SERVER = import.meta.env.VITE_BACKEND_URL;
 
   const fetchLatestMatches = async () => {
     try {
-      const response = await axios.get(
-        "https://cricbuzz-cricket.p.rapidapi.com/news/v1/index",
-        {
-          headers: {
-            "x-rapidapi-key": apiKey,
-            "x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com",
-          },
-        }
-      );
-      const stories = response.data.storyList;
-      const topHeadlines = stories
-        .filter((item) => item.story)
-        .slice(0, 6)
-        .map((item) => item.story.hline);
-      setMatchData(topHeadlines);
+      const response = await axios.get(`${PROXY_SERVER}/latest/cricknews`);
+      setMatchData(response.data.topHeadlines);
     } catch (error) {
       console.error("Error fetching live matches:", error);
       setMatchData([]);

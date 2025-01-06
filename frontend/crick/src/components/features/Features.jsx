@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import speechFeature from "../../assets/speechFeature.png";
 
 function Features() {
   const navigate = useNavigate();
@@ -38,7 +37,7 @@ function Features() {
 
       <div className="flex justify-center w-full">
         <img
-          src={speechFeature}
+          src="https://res.cloudinary.com/dyrmawqcn/image/upload/v1736140369/speechFeature_tdtds6.png"
           className="w-width-2 rounded-md shadow-2xl"
           alt="Voice Control Feature"
         />
