@@ -7,6 +7,7 @@ import matchRouter from "./routes/matchRoutes.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import googleRouter from "./routes/googleRoutes.js";
+import crickNewsRouter from "./routes/cricknewsRoutes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -38,4 +39,5 @@ app.get("/", (req, res) => {
 app.use("/api", router);
 app.use("/match", matchRouter);
 app.use("/api2", googleRouter);
+app.use("/latest", crickNewsRouter);
 export { app };
