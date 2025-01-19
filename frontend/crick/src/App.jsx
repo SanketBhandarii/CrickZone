@@ -1,10 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
+
+import { Context } from "./store/Context";
+import useAxios from "./api/axiosInstance";
+
 import Header from "./components/navbar/Header";
 import Intro from "./components/Zoner/Intro";
-import axios from "axios";
-import { Context } from "./store/Context";
-import { ToastContainer, toast } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -13,19 +17,23 @@ function App() {
   const navigate = useNavigate();
   const LOADER_DELAY = 2700;
 
+  const [{ data, load, error }, execute] = useAxios(
+    {
+      url: `/api/home`,
+      withCredentials: true,
+    },
+    {
+      manual: true,
+    }
+  );
+
   useEffect(() => {
     localStorage.clear();
 
     async function getAuth() {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/home`,
-          {
-            withCredentials: true,
-          }
-        );
-
-        if (response.data.msg === "Please do login!") {
+        await execute();
+        if (data?.msg === "Please do login!") {
           navigate("/zone/login");
         }
       } catch (error) {
@@ -52,7 +60,11 @@ function App() {
         Check out the latest news{" "}
         <NavLink
           to="/currentnews"
-          style={{ color: "lightblue", textDecoration: "underline", cursor:"pointer"}}
+          style={{
+            color: "lightblue",
+            textDecoration: "underline",
+            cursor: "pointer",
+          }}
         >
           here
         </NavLink>

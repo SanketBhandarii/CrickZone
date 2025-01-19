@@ -37,7 +37,7 @@ function Runs() {
         }
       }
       setCurrentRun([`${currentOver + 1} over completed`]);
-      setCurrentOver((prev) => prev + 1); // Increment currentOver
+      setCurrentOver((prev) => prev + 1);
       setBall(0);
       setTimeout(() => {
         setCurrentRun([]);
