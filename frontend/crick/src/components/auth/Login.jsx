@@ -6,7 +6,6 @@ import { GoogleLogin, useGoogleOneTapLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 
 function Login() {
-  const { setUser, user } = useContext(Context);
   const [pass, setPass] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
