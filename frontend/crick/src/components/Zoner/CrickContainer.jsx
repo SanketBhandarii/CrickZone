@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import Confetti from "react-confetti"
-import Runs from "./runs"
+import Runs from "./Runs"
 import Controls from "./Dwwn"
 import CurrentScore from "./CurrentScore"
 import { Context } from "../../store/Context"
 import { useNavigate } from "react-router-dom"
 import Winner from "../winner/Winner"
-import Voice from "./voice"
+import Voice from "./Voice"
 import SpeechFeatureInfo from "./speechFeatureInfo/SpeecFeatureInfo"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -17,7 +17,6 @@ function CrickContainer() {
     wicket,
     currentOver,
     over,
-    currentRun,
     setCurrentRun,
     setRun,
     run,
