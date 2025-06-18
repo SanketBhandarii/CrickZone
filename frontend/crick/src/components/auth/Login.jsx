@@ -1,183 +1,115 @@
-import React, { useContext, useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { Context } from "../../store/Context";
-import { GoogleLogin, useGoogleOneTapLogin } from "@react-oauth/google";
-import { jwtDecode } from "jwt-decode";
+import { useContext, useState } from "react"
+import { NavLink, useNavigate } from "react-router-dom"
+import axios from "axios"
+import { Context } from "../../store/Context"
+import { GoogleLogin } from "@react-oauth/google"
+import { jwtDecode } from "jwt-decode"
+import { Card, CardContent, CardFooter } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Eye, EyeOff, Zap, Loader2 } from "lucide-react"
+import { toast } from "sonner"
 
 function Login() {
-  const [pass, setPass] = useState(true);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [msg, setMsg] = useState("");
-  const [googleEmail, setGoogleEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const navigate = useNavigate();
+  const { setUser } = useContext(Context)
+  const [showPassword, setShowPassword] = useState(false)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
-  function handleEmail(event) {
-    setEmail(event.target.value);
-  }
-
-  function handlePass(event) {
-    setPassword(event.target.value);
-  }
-
-  async function handleSubmit(event) {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/login`,
-        { email, password },
-        { withCredentials: true }
-      );
-
-      const receivedMsg = response.data.msg;
-      setMsg(receivedMsg);
-
-      if (
-        receivedMsg !== "Incorrect password or email" &&
-        receivedMsg !== "You are not verified!"
-      ) {
-        setTimeout(() => {
-          setPassword("");
-          setEmail("");
-          navigate("/zone");
-        }, 1500);
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, { email, password }, { withCredentials: true })
+      if (data.msg?.includes("Incorrect") || data.msg === "You are not verified!") {
+        toast.error(data.msg)
       } else {
-        setPassword("");
-        setEmail("");
-        setTimeout(() => {
-          setMsg("");
-        }, 2000);
+        toast.success("Login successful!")
+        setTimeout(() => navigate("/zone", { replace: true }), 1000)
       }
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      toast.error(error.response?.data?.msg || "Login failed.")
+    } finally {
+      setLoading(false)
+      setEmail("")
+      setPassword("")
     }
   }
 
-  async function handleGoogleLogin(cred) {
-    if (cred) {
-      const decode = jwtDecode(cred.credential);
-      try {
-        const response = await axios.post(
-          `${import.meta.env.VITE_BACKEND_URL}/api2/google/login`,
-          { username: decode.name, googleEmail: decode.email },
-          { withCredentials: true }
-        );
+  const handleGoogleLogin = async (cred) => {
+    try {
+      const decode = jwtDecode(cred.credential)
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api2/google/login`, {
+        username: decode.name,
+        googleEmail: decode.email,
+      }, { withCredentials: true })
 
-        const receivedMsg = response.data.msg;
-        setMsg(receivedMsg);
-
-        if (receivedMsg !== "Credentials are missing") {
-          setTimeout(() => {
-            setUsername("");
-            setGoogleEmail("");
-            navigate("/zone", { replace: true });
-          }, 1500);
-        } else {
-          setUsername("");
-          setGoogleEmail("");
-          setTimeout(() => {
-            setMsg("");
-          }, 2000);
-        }
-      } catch (error) {
-        console.log(error);
+      if (data.msg?.includes("missing")) toast.error("Google login failed")
+      else {
+        toast.success("Login successful!")
+        setTimeout(() => navigate("/zone", { replace: true }), 1000)
       }
-    } else {
-      console.log("No credentials provided");
+    } catch {
+      toast.error("Google login failed.")
     }
   }
 
   return (
-    <div className="flex mt-5 float">
-      <div className="right flex flex-col gap-5 justify-center items-center rounded-bl-lg rounded-tl-lg h-height-1 w-80 bg-sky-700 px-7 text-white font-semibold text-lg max-scrn2:hidden text-center colorChanger">
-        <img
-          src="https://cdn.pixabay.com/photo/2017/01/31/15/31/tennis-2025095_1280.png"
-          width={120}
-          className="rounded-full rotate"
-        />
-        <span>
-          <h2>Hello, Friend!</h2>
-          <p>Enter your details and start your journey with us</p>
-        </span>
-      </div>
-      <div
-        className="left h-height-1 w-width-1 flex flex-col
-     justify-center items-center bg-white rounded-tr-lg rounded-br-lg max-scrn2:rounded-lg shadow-md input-box"
-      >
-        <div className="bg-sky-700 h-20 items-center font-font_1 justify-center rounded-tl-lg rounded-tr-lg w-full px-7 text-white font-semibold text-lg text-center hidden max-scrn2:flex">
-          <h2 className="">Friend! Enter your details</h2>
-
-          <img
-            src="https://cdn.pixabay.com/photo/2017/01/31/15/31/tennis-2025095_1280.png"
-            width={110}
-            className="rounded-full ml-7 rotate"
-          />
+    <div className="w-full max-w-md mx-auto">
+      <div className="text-center mb-8">
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-zinc-900 rounded-2xl mb-4 border border-zinc-800">
+          <Zap className="w-8 h-8 text-white" />
         </div>
-        <form
-          action=""
-          className="h-96 gap-5 flex flex-col items-center justify-center"
-          onSubmit={handleSubmit}
-        >
-          <h2 className="text-sky-500 text-xl font-semibold flex flex-col items-center">
-            <p className="text-red-600 text-lg text-center">{}</p>
-            {msg ? (
-              <span className="w-72 text-center">{msg}</span>
-            ) : (
-              "Login Yourself"
-            )}
-          </h2>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            placeholder="Email"
-            onChange={handleEmail}
-            required
-            className="bg-gray-200 placeholder:text-gray-600 placeholder:font-semibold py-2 w-64 px-4 rounded-md outline-none text-gray-800 font-semibold"
-          />
-          <div className="relative">
-            <input
-              type={pass ? "password" : "text"}
-              name="password"
-              value={password}
-              placeholder="Password"
-              onChange={handlePass}
-              required
-              className="bg-gray-200 placeholder:text-gray-600 placeholder:font-semibold py-2 w-64 px-4 rounded-md outline-none text-gray-800 font-semibold"
-            />
-            <i
-              className={`absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer font-bold text-sky-900 ${
-                pass ? "fa-regular fa-eye" : "fa-solid fa-eye-slash"
-              }`}
-              onClick={() => setPass(!pass)}
-            ></i>
-          </div>
-          <button
-            type="submit"
-            className="bg-sky-600 team-btn hover:bg-sky-700 transition duration-300 text-white w-64 flex justify-center rounded-md py-2 px-4"
-          >
-            Login
-          </button>
-          <GoogleLogin
-            onSuccess={(credential) => handleGoogleLogin(credential)}
-            onError={() => {
-              console.log("Login Failed");
-            }}
-          />
-
-          <span className="text-sm flex text-neutral-800 font-bold">
-            Don't have an account?
-            <NavLink className="pl-1 text-amber-600" to={"/zone/signup"}>
-              {" "}
-              SignUp
-            </NavLink>
-          </span>
-        </form>
+        <h1 className="text-3xl font-bold text-white mb-2">Welcome back</h1>
+        <p className="text-zinc-400">Sign in to your CrickZone account</p>
       </div>
+
+      <Card className="bg-zinc-900/50 border-zinc-800 backdrop-blur-sm">
+        <CardContent className="p-6 space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label className="text-sm font-medium text-zinc-200">Email</Label>
+              <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" className="bg-zinc-800/50 border-zinc-700 text-white placeholder:text-zinc-500" required />
+            </div>
+            <div className="space-y-2">
+              <Label className="text-sm font-medium text-zinc-200">Password</Label>
+              <div className="relative">
+                <Input type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" className="bg-zinc-800/50 border-zinc-700 text-white placeholder:text-zinc-500 pr-10" required />
+                <Button type="button" variant="ghost" size="sm" className="absolute right-0 top-0 h-full px-3 text-zinc-400" onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </Button>
+              </div>
+            </div>
+            <Button type="submit" className="w-full bg-white text-black hover:bg-zinc-200" disabled={loading}>
+              {loading ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Signing in...</> : "Sign in"}
+            </Button>
+          </form>
+
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-zinc-800" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-zinc-900 px-2 text-zinc-500">Or continue with</span>
+            </div>
+          </div>
+
+          <div className="flex justify-center">
+            <GoogleLogin onSuccess={handleGoogleLogin} onError={() => toast.error("Google login failed")} />
+          </div>
+        </CardContent>
+
+        <CardFooter className="px-6 pb-6">
+          <p className="text-sm text-zinc-400 text-center w-full">
+            Don't have an account? <NavLink to="/zone/signup" className="text-white hover:text-zinc-300">Sign up</NavLink>
+          </p>
+        </CardFooter>
+      </Card>
     </div>
-  );
+  )
 }
 
-export default Login;
+export default Login

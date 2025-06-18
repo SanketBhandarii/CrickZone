@@ -1,46 +1,71 @@
-import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, Mic, Zap, Star } from "lucide-react";
 
 function Features() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center gap-4 min-h-screen w-full p-4 justify-center bg-gradient-to-t from-gradient1 to-gradient2">
-      <div className="absolute top-8 left-8">
-        <button
-          onClick={() => navigate("/zone")}
-          className="flex items-center gap-2 text-white text-lg sm:text-xl"
-        >
-          <i className="fa-solid fa-circle-left text-3xl sm:text-3xl"></i>
-          <span>Back</span>
-        </button>
-      </div>
-      <h1 className="text-white font-semibold text-2xl">
-        More Features To Come !
-      </h1>
-      <div className="bg-gradient-to-r from-cyan-700 to-cyan-800 text-white px-4 py-6 rounded-2xl shadow-2xl w-full max-w-max">
-        <h1 className="text-lg font-bold text-center mb-3">
-          Voice Control Feature
-        </h1>
-        <p className="text-base text-center">
-          See the new feature! Use voice commands like{" "}
-          <span className="font-bold">"one run"</span> or{" "}
-          <span className="font-bold">"wide"</span> to update the score.{" "}
-          <NavLink
-            to="/ZONE"
-            className="text-yellow-300 underline hover:text-yellow-400"
+    <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black p-4">
+      <div className="max-w-4xl mx-auto space-y-7">
+        {/* Header */}
+        <div className="flex items-center justify-between gap-4 mt-5">
+          <Button
+            onClick={() => navigate("/zone")}
+            variant="ghost"
+            className="text-zinc-400 bg-neutral-900 hover:bg-neutral-800 hover:text-white"
           >
+            <ArrowLeft className="w-4 h-4 mr-2" />
             Back
-          </NavLink>
-        </p>
-      </div>
+          </Button>
+          <div>
+            <p className="text-zinc-400">
+              Discover what makes CrickZone special
+            </p>
+          </div>
+        </div>
 
-      <div className="flex justify-center w-full">
-        <img
-          src="https://res.cloudinary.com/dyrmawqcn/image/upload/v1736140369/speechFeature_tdtds6.png"
-          className="w-width-2 rounded-md shadow-2xl"
-          alt="Voice Control Feature"
-        />
+        {/* Voice Feature Highlight */}
+        <Card className="bg-gradient-to-r from-blue-900/50 to-teal-900/50 border-blue-500/20">
+          <CardContent className="p-6">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                <Mic className="w-6 h-6 text-blue-400" />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-xl font-semibold text-white mb-2">
+                  Voice Control Feature
+                </h2>
+                <p className="text-zinc-300 mb-4">
+                  Use voice commands like{" "}
+                  <span className="text-blue-400 font-semibold">"one run"</span>{" "}
+                  or <span className="text-blue-400 font-semibold">"wide"</span>{" "}
+                  to update the score instantly.
+                </p>
+                <Button
+                  onClick={() => navigate("/zone")}
+                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                >
+                  Try It Now
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Feature Image */}
+        <Card className="bg-zinc-900 border-zinc-800">
+          <CardContent className="p-6">
+            <div className="text-center">
+              <img
+                src="https://res.cloudinary.com/dyrmawqcn/image/upload/v1736140369/speechFeature_tdtds6.png"
+                className="w-full max-w-2xl mx-auto rounded-lg shadow-lg"
+                alt="Voice Control Feature Demo"
+              />
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

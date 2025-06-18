@@ -1,34 +1,29 @@
-import React, { useContext, useEffect } from "react";
-import { Context } from "../../store/Context";
-import { v4 as uuidv4 } from "uuid";
-import axios from "axios";
+import { useContext, useEffect } from "react"
+import { Context } from "../../store/Context"
+import axios from "axios"
+import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Trophy, Home, RotateCcw } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 
 function Winner() {
-  const {
-    run,
-    wicket,
-    inning,
-    t2name,
-    matchWinner,
-    setTossWinner,
-    over,
-    setUserMatchInfo,
-    userMatchInfo,
-  } = useContext(Context);
+  const { run, wicket, inning, t2name, matchWinner, setTossWinner, over, setUserMatchInfo, userMatchInfo } =
+    useContext(Context)
+  const navigate = useNavigate()
 
   useEffect(() => {
-    const t1name = localStorage.getItem("t1name");
-    setTossWinner("");
-    const currentDate = new Date();
+    const t1name = localStorage.getItem("t1name")
+    setTossWinner("")
+    const currentDate = new Date()
     const formattedDate = currentDate.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
-    });
+    })
 
     async function addMatch() {
       if (!matchWinner) {
-        return;
+        return
       }
       try {
         const req = await axios.post(
@@ -38,46 +33,83 @@ function Winner() {
             over: over,
             teams: `${t1name} vs ${inning}`,
             result: matchWinner,
-            location: "Mumbai",
           },
-          { withCredentials: true }
-        );
+          { withCredentials: true },
+        )
       } catch (error) {
-        console.error("Error adding match:", error);
+        console.error("Error adding match:", error)
       }
     }
 
-    // Call the function to add the match
-    addMatch(); 
-  }, [matchWinner]);
+    addMatch()
+  }, [matchWinner])
 
   return (
-    <div>
-      <div className="text-center mb-4">
-        <h1 className="text-2xl font-bold mb-4 text-green-300">
-          🏆 Match Winner! 🏆
-        </h1>
-        <p className="text-lg font-semibold px-2 mb-1 text-white">
-          {localStorage.getItem("t1name")} scored{" "}
-          {localStorage.getItem("t1run")} runs and{" "}
-          {localStorage.getItem("t1wicket")} wicket(s)
-        </p>
-        <p className="text-lg px-2 font-semibold text-cyan-200">
-          {inning} scored {run} runs and {wicket} wicket(s)
-        </p>
+    <div className="w-full max-w-lg mx-auto p-4">
+      <Card className="bg-zinc-900 border-zinc-800">
+        <CardContent className="p-6">
+          <div className="space-y-4">
+            {/* Header - Compact */}
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Trophy className="w-5 h-5 text-yellow-500" />
+                <h1 className="text-lg font-semibold text-white">Match Complete</h1>
+              </div>
+              <p className="text-green-400 font-medium">{matchWinner}</p>
+            </div>
 
-        {/* Trophy Icon */}
-        <i className="fa-solid fa-award ext-yellow-400 bg-yellow-600 rounded-full w-24 py-4 text-6xl mt-4 mb-2"></i>
+            {/* Scores - Compact Grid */}
+            <div className="grid grid-cols-3 gap-3 items-center">
+              <div className="text-center p-3 bg-zinc-800 rounded-lg">
+                <p className="text-zinc-400 text-xs mb-1">{localStorage.getItem("t1name")}</p>
+                <p className="text-lg font-bold text-white">
+                  {localStorage.getItem("t1run")}/{localStorage.getItem("t1wicket")}
+                </p>
+              </div>
 
-        <h2 className="text-lg px-2 font-bold mt-4 text-green-300">
-          {matchWinner} 🎉
-        </h2>
-      </div>
-      <h1 className="text-white font-semibold text-xl text-center">
-        Take Your ScreenShot!📸
-      </h1>
+              <div className="text-center">
+                <span className="text-zinc-500 text-sm font-medium">VS</span>
+              </div>
+
+              <div className="text-center p-3 bg-zinc-800 rounded-lg">
+                <p className="text-zinc-400 text-xs mb-1">{inning}</p>
+                <p className="text-lg font-bold text-white">
+                  {run}/{wicket}
+                </p>
+              </div>
+            </div>
+
+            {/* Match Info - Single Line */}
+            <div className="flex justify-between items-center text-xs text-zinc-400 px-2">
+              <span>{over} Overs • Match</span>
+              <span>📸 Screenshot ready</span>
+            </div>
+
+            {/* Actions - Compact */}
+            <div className="grid grid-cols-2 gap-2">
+              <Button
+                onClick={() => navigate("/usermatches")}
+                variant="outline"
+                size="sm"
+                className="bg-zinc-800 border-zinc-700 text-zinc-300 hover:bg-zinc-700 hover:text-white"
+              >
+                <Home className="w-4 h-4 mr-1" />
+                History
+              </Button>
+              <Button
+                onClick={() => navigate("/zone/play")}
+                size="sm"
+                className="bg-white text-black hover:bg-zinc-200"
+              >
+                <RotateCcw className="w-4 h-4 mr-1" />
+                New Match
+              </Button>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
-  );
+  )
 }
 
-export default Winner;
+export default Winner

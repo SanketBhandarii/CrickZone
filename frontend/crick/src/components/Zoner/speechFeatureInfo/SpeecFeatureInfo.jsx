@@ -1,19 +1,23 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import { Mic } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
 
-function SpeecFeatureInfo() {
+function SpeechFeatureInfo() {
   return (
-    <div className="ml-1 bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-4 rounded-xl shadow-xl w-[600px] max-scrn4:w-full max-scrn4:max-w-lg">
-      <h1 className="text-base font-bold text-center mb-2">
-        Voice Control Feature
-      </h1>
-      <p className="text-sm text-center">
-        See the new feature! Use voice commands like{" "}
-        <span className="font-bold">"one run"</span> or{" "}
-        <span className="font-bold">"wide"</span> to update the score.{" "}
-      </p>
-    </div>
-  );
+    <Card className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border-blue-500/20 max-w-2xl w-full mx-auto ">
+      <CardContent className="p-4">
+        <div className="text-center">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <Mic className="w-4 h-4 text-blue-400" />
+            <h3 className="font-semibold text-white">Voice Control Feature</h3>
+          </div>
+          <p className="text-sm text-zinc-400">
+            See the new feature! Use voice commands like <span className="text-blue-400 font-medium">"one run"</span> or{" "}
+            <span className="text-blue-400 font-medium">"wide"</span> to update the score.
+          </p>
+        </div>
+      </CardContent>
+    </Card>
+  )
 }
 
-export default SpeecFeatureInfo;
+export default SpeechFeatureInfo

@@ -1,19 +1,11 @@
-import React, { useState } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
-// import vd1 from "/videos/vd-1.mp4";
-// import vd2 from "/videos/vd-2.mp4";
-// import vd3 from "/videos/vd-3.mp4";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, Play, X, Star, Quote } from "lucide-react";
 import user1 from "../../assets/user1.png";
 import user2 from "../../assets/user2.png";
 import user3 from "../../assets/user3.png";
-import { useNavigate } from "react-router-dom";
-
-const vd1 = "/videos/vd-1.mp4";
-const vd2 = "/videos/vd-2.mp4";
-const vd3 = "/videos/vd-3.mp4";
 
 const Reviews = () => {
   const navigate = useNavigate();
@@ -24,48 +16,54 @@ const Reviews = () => {
     {
       id: 1,
       name: "Amit Sharma",
+      role: "Tournament Organizer",
       videoUrl:
         "https://res.cloudinary.com/dyrmawqcn/video/upload/v1731517544/vd-1_ec8uuq.mp4",
       thumbnail: user1,
       title: "CrickZone Changed My Game!",
       description:
         "Using CrickZone has brought a new level of excitement to our local matches. The live score tracking and voice recognition are amazing!",
+      rating: 5,
     },
     {
       id: 2,
       name: "Rahul Verma",
+      role: "Club Captain",
       videoUrl:
         "https://res.cloudinary.com/dyrmawqcn/video/upload/v1731517582/vd-3_ofem9n.mp4",
       thumbnail: user3,
-      title: "Perfect for Tournament Organizers",
+      title: "Perfect for Tournament Management",
       description:
         "CrickZone made it easy to manage scores during our weekend tournament. The interface is so smooth, and our players loved it!",
+      rating: 5,
     },
     {
       id: 3,
       name: "Akash Gupta",
+      role: "Cricket Enthusiast",
       videoUrl:
         "https://res.cloudinary.com/dyrmawqcn/video/upload/v1731517580/vd-2_unh1y8.mp4",
       thumbnail: user2,
       title: "A Game Changer for Cricket Fans",
       description:
         "Now I can easily follow all our club matches! CrickZone makes everything more engaging and professional.",
+      rating: 5,
     },
     {
       id: 4,
       name: "Sonia Kapoor",
+      role: "League Coordinator",
       videoUrl: null,
       thumbnail: null,
       title: "Made Scoring Fun and Easy!",
       description:
         "With CrickZone, tracking scores has become so much easier and enjoyable for everyone in our league. Highly recommended!",
+      rating: 5,
     },
   ];
 
   const openVideoModal = (videoUrl) => {
-    if (videoUrl == null) {
-      return;
-    }
+    if (!videoUrl) return;
     setSelectedVideoUrl(videoUrl);
     setIsModalOpen(true);
   };
@@ -75,106 +73,122 @@ const Reviews = () => {
     setSelectedVideoUrl(null);
   };
 
-  const NextArrow = ({ onClick }) => (
-    <div
-      className="absolute right-4 top-1/2 transform -translate-y-1/2 translate-x-1/2 z-10 cursor-pointer bg-slate-600 hover:bg-slate-600 rounded-full p-3 m-2"
-      onClick={onClick}
-    >
-      <FaArrowRight className="text-2xl text-white" />
-    </div>
-  );
-
-  const PrevArrow = ({ onClick }) => (
-    <div
-      className="absolute left-4 top-1/2 transform -translate-y-1/2 -translate-x-1/2 z-10 cursor-pointer bg-slate-600 hover:bg-slate-600 rounded-full p-3 m-2"
-      onClick={onClick}
-    >
-      <FaArrowLeft className="text-2xl text-white" />
-    </div>
-  );
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-
   return (
-    <div className="bg-gradient-to-b from-gradient1 to-gradient2 min-h-screen pt-12 px-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto text-center mt-5">
-        <h1 className="text-4xl font-extrabold text-slate-200 mb-4">
-          User Reviews
-        </h1>
-        <p className="text-lg text-gray-300 mb-12">
-          Hear from our users on how CrickZone has transformed their cricket
-          experience.
-        </p>
+    <div className="min-h-screen bg-black">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(59,130,246,0.1),transparent_50%)]" />
 
-        <Slider {...settings} className="px-4">
+      <div className="relative z-10 max-w-6xl mx-auto p-6 space-y-8">
+        {/* Header */}
+        <div className="flex items-center gap-4">
+          <Button
+            onClick={() => navigate("/zone")}
+            variant="ghost"
+            className="text-zinc-400 hover:text-white hover:bg-zinc-800/50"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back
+          </Button>
+          <div className="h-6 w-px bg-zinc-700" />
+          <div>
+            <h1 className="text-3xl font-bold text-white">User Reviews</h1>
+            <p className="text-zinc-400">
+              See what our community says about CrickZone
+            </p>
+          </div>
+        </div>
+
+        {/* Reviews Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reviews.map((review) => (
-            <div key={review.id} className="px-4">
-              <div
-                className="bg-gray-800 shadow-lg rounded-lg p-6 flex flex-col items-center cursor-pointer"
-                onClick={() => openVideoModal(review.videoUrl)}
-              >
-                <div
-                  className="w-full h-48 bg-cover bg-center rounded-lg mb-4"
-                  style={{ backgroundImage: `url(${review.thumbnail})` }}
-                >
-                  <div className="w-full h-full flex items-center justify-center bg-black bg-opacity-50 rounded-lg">
-                    <button className="text-white text-3xl">▶</button>
+            <Card
+              key={review.id}
+              className="bg-zinc-900/30 border-zinc-800/50 backdrop-blur-sm hover:bg-zinc-800/30 transition-all duration-300 group cursor-pointer"
+              onClick={() => openVideoModal(review.videoUrl)}
+            >
+              <CardContent className="p-6">
+                <div className="space-y-4">
+                  {/* Video Thumbnail or Avatar */}
+                  <div className="relative">
+                    {review.thumbnail ? (
+                      <div className="relative w-full h-40 rounded-lg overflow-hidden bg-zinc-800">
+                        <img
+                          src={review.thumbnail || "/placeholder.svg"}
+                          alt={review.name}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-colors">
+                          <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                            <Play className="w-5 h-5 text-white ml-1" />
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="w-full h-40 bg-zinc-800/50 rounded-lg flex items-center justify-center">
+                        <Quote className="w-8 h-8 text-zinc-600" />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Rating */}
+                  <div className="flex items-center gap-1">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className="w-4 h-4 fill-yellow-500 text-yellow-500"
+                      />
+                    ))}
+                  </div>
+
+                  {/* Content */}
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-semibold text-white group-hover:text-blue-100 transition-colors">
+                      {review.title}
+                    </h3>
+                    <p className="text-zinc-400 text-sm leading-relaxed line-clamp-3">
+                      {review.description}
+                    </p>
+                  </div>
+
+                  {/* Author */}
+                  <div className="pt-3 border-t border-zinc-800">
+                    <p className="text-white font-medium text-sm">
+                      {review.name}
+                    </p>
+                    <p className="text-zinc-500 text-xs">{review.role}</p>
                   </div>
                 </div>
-                <h2 className="text-xl font-bold text-white mb-2">
-                  {review.title}
-                </h2>
-                <p className="text-gray-300 text-sm mb-2">
-                  {review.description}
-                </p>
-                <p className="text-gray-500 text-xs">— {review.name}</p>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
-        </Slider>
+        </div>
+
+        {/* Stats Section */}
       </div>
 
+      {/* Video Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="relative bg-black p-4 max-w-3xl w-full rounded-lg">
-            <button
-              className="absolute top-4 left-4 text-white bg-yellow-700 p-3 rounded-full text-2xl cursor-pointer z-20"
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="relative w-full max-w-4xl">
+            <Button
               onClick={closeModal}
+              variant="ghost"
+              size="sm"
+              className="absolute -top-12 right-0 text-white hover:bg-white/10 z-10"
             >
-              <FaTimes />
-            </button>
-            <video
-              controls
-              autoPlay
-              className="w-full max-h-[70vh] object-contain rounded-lg"
-            >
-              <source src={selectedVideoUrl} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+              <X className="w-5 h-5" />
+            </Button>
+            <div className="bg-black rounded-lg overflow-hidden">
+              <video
+                controls
+                autoPlay
+                className="w-full max-h-[70vh] object-contain"
+              >
+                <source src={selectedVideoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
         </div>
       )}

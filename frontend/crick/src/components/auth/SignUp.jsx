@@ -1,157 +1,127 @@
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useFormik } from "formik";
-import { signUpSchema } from "../../schema/FormSchema";
-
-const initialValues = {
-  username: "",
-  email: "",
-  password: "",
-};
+import { useState } from "react"
+import { NavLink, useNavigate } from "react-router-dom"
+import axios from "axios"
+import { useFormik } from "formik"
+import { signUpSchema } from "../../schema/FormSchema"
+import { Card, CardContent, CardFooter } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Eye, EyeOff, UserPlus, Loader2 } from 'lucide-react'
+import { toast } from 'sonner'
 
 function SignUp() {
-  const [pass, setPass] = useState(true);
-  const [msg, setMsg] = useState("");
-  const navigate = useNavigate();
-  //   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik({
-      initialValues,
-      validationSchema: signUpSchema,
-      onSubmit: async (values, action) => {
-        try {
-          const response = await axios.post(
-            `${import.meta.env.VITE_BACKEND_URL}/api/signup`,
-            {
-              username: values.username,
-              email: values.email,
-              password: values.password,
-            },
-            {
-              withCredentials: true,
-            }
-          );
-          action.resetForm();
-          setMsg(response.data.msg);
-          if (
-            response.data.msg !== "User with this credentials already exist" &&
-            response.data.msg ==
-              "SignUp successful, check your mail for verification"
-          ) {
-            setTimeout(() => {
-              setMsg("");
-              navigate("/zone/login");
-            }, 1500);
-            return;
-          } else {
-            setTimeout(() => {
-              setMsg("");
-            }, 3000);
-          }
-        } catch (e) {
-          console.log(e);
+  const [showPassword, setShowPassword] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
+
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+    initialValues: { username: "", email: "", password: "" },
+    validationSchema: signUpSchema,
+    onSubmit: async (values, action) => {
+      setLoading(true)
+      
+      try {
+        const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/signup`,
+          values, { withCredentials: true })
+        
+        if (data.msg === "SignUp successful, check your mail for verification") {
+          action.resetForm()
+          toast.success("Account created! Check your email.")
+          setTimeout(() => navigate("/zone/login"), 1500)
+        } else {
+          toast.error(data.msg === "User with this credentials already exist" ? "User already exists" : "Signup failed")
         }
-      },
-    });
+      } catch (error) {
+        toast.error("Signup failed")
+      } finally {
+        setLoading(false)
+      }
+    },
+  })
 
   return (
-    <div className="flex mt-5 float">
-      <div className="right flex flex-col gap-5 justify-center items-center rounded-bl-lg rounded-tl-lg h-height-1  w-80 bg-sky-700 px-7 text-white font-semibold text-lg max-scrn2:hidden text-center colorChanger">
-        <img
-          src="https://cdn.pixabay.com/photo/2017/01/31/15/31/tennis-2025095_1280.png"
-          width={120}
-          className="rotate"
-        />
-        <span>
-          <h2>Hello, Friend!</h2>
-          <p>Enter your details and start journey with us</p>
-        </span>
-      </div>
-      <div
-        className="left h-height-1 w-width-1 flex flex-col
-     justify-center items-center bg-white rounded-tr-lg rounded-br-lg max-scrn2:rounded-lg max-md:h-auto pb-2 shadow-md input-box"
-      >
-        <div className="bg-sky-700 h-20 items-center font-font_1 justify-center rounded-tl-lg rounded-tr-lg w-full px-7 text-white font-semibold text-lg text-center hidden max-scrn2:flex">
-          <h2 className="">Friend! Enter your details</h2>
-
-          <img
-            src="https://cdn.pixabay.com/photo/2017/01/31/15/31/tennis-2025095_1280.png"
-            width={110}
-            className="rounded-full ml-7 rotate"
-          />
+    <div className="w-full max-w-md mx-auto">
+      <div className="text-center mb-8">
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-zinc-900 rounded-2xl mb-4 border border-zinc-800">
+          <UserPlus className="w-8 h-8 text-white" />
         </div>
-        <form
-          action=""
-          className="h-96 gap-5 flex flex-col items-center justify-center"
-          onSubmit={handleSubmit}
-        >
-          <h2 className="text-sky-500 text-xl font-semibold flex flex-col items-center">
-            {/* <p className="text-red-600 text-lg text-center">{}</p> */}
-            {msg ? <span className="w-72 text-center">{msg}</span> : "Sign Up"}
-          </h2>
-          {errors.password && touched.password ? (
-            <span className="text-amber-900 text-center text-sm font-semibold">
-              {errors.password}
-            </span>
-          ) : null}
-          <input
-            type="text"
-            name="username"
-            value={values.username}
-            placeholder="Username"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            required
-            className="bg-gray-200 placeholder:text-gray-600 placeholder:font-semibold py-2 w-64 px-4 rounded-md outline-none text-gray-800 font-semibold"
-          />
-
-          <input
-            type="email"
-            name="email"
-            value={values.email}
-            placeholder="Enter valid email"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            required
-            className="bg-gray-200 placeholder:text-gray-600 placeholder:font-semibold py-2 w-64 px-4 rounded-md outline-none text-gray-800 font-semibold"
-          />
-          <div className="relative">
-            <input
-              type={pass ? "password" : "text"}
-              name="password"
-              value={values.password}
-              placeholder="Password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              required
-              className="bg-gray-200 placeholder:text-gray-600 placeholder:font-semibold py-2 w-64 px-4 rounded-md outline-none text-gray-800 font-semibold"
-            />
-            <i
-              className={`absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer font-bold text-sky-900 ${
-                pass ? "fa-regular fa-eye" : "fa-solid fa-eye-slash"
-              }`}
-              onClick={() => setPass(!pass)}
-            ></i>
-          </div>
-
-          <button
-            type="submit"
-            className="bg-sky-600 team-btn hover:bg-sky-700 transition duration-300 text-white w-64 flex justify-center rounded-md py-2 px-4"
-          >
-            Sign Up
-          </button>
-          <span className="text-sm flex text-neutral-800 font-bold">
-            Already have an account?
-            <NavLink className="pl-1 text-amber-600" to={"/zone/login"}>
-              {" "}
-              Login
-            </NavLink>
-          </span>
-        </form>
+        <h1 className="text-3xl font-bold text-white mb-2">Create account</h1>
+        <p className="text-zinc-400">Join CrickZone and start tracking matches</p>
       </div>
+
+      <Card className="bg-zinc-900/50 border-zinc-800 backdrop-blur-sm">
+        <CardContent className="p-6 space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label className="text-sm font-medium text-zinc-200">Username</Label>
+              <Input
+                name="username"
+                value={values.username}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="Choose a username"
+                className="bg-zinc-800/50 border-zinc-700 text-white placeholder:text-zinc-500"
+                required
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label className="text-sm font-medium text-zinc-200">Email</Label>
+              <Input
+                name="email"
+                type="email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="Enter your email"
+                className="bg-zinc-800/50 border-zinc-700 text-white placeholder:text-zinc-500"
+                required
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label className="text-sm font-medium text-zinc-200">Password</Label>
+              <div className="relative">
+                <Input
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={(e) => {
+                    handleBlur(e)
+                    errors.password && touched.password && toast.error(errors.password)
+                  }}
+                  placeholder="Create a password"
+                  className="bg-zinc-800/50 border-zinc-700 text-white placeholder:text-zinc-500 pr-10"
+                  required
+                />
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="absolute right-0 top-0 h-full px-3 hover:bg-transparent text-zinc-400"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </Button>
+              </div>
+            </div>
+            
+            <Button type="submit" className="w-full bg-white text-black hover:bg-zinc-200" disabled={loading}>
+              {loading ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Creating...</> : "Create account"}
+            </Button>
+          </form>
+        </CardContent>
+        
+        <CardFooter className="px-6 pb-6">
+          <p className="text-sm text-zinc-400 text-center w-full">
+            Already have an account? <NavLink to="/zone/login" className="text-white hover:text-zinc-300">Sign in</NavLink>
+          </p>
+        </CardFooter>
+      </Card>
     </div>
-  );
+  )
 }
 
-export default SignUp;
+export default SignUp
