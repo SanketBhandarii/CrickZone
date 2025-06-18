@@ -17,10 +17,6 @@ const matchSchema = new mongoose.Schema({
     type: String,
     required: true, 
   },
-  location: {
-    type: String,
-    required: true, 
-  },
 });
 
 export const Match = mongoose.model("Match", matchSchema);

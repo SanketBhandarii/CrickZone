@@ -3,7 +3,7 @@ import { User } from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 
 export const createMatch = async (req, res) => {
-  const { date, over, teams, result, location } = req.body;
+  const { date, over, teams, result } = req.body;
   const token = req.cookies.token;
 
   if (!token) {
@@ -21,7 +21,7 @@ export const createMatch = async (req, res) => {
       over,
       teams,
       result,
-      location,
+
     });
 
     const user = await User.findByIdAndUpdate(userId, {
