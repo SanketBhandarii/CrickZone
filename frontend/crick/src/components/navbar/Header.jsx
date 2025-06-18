@@ -57,7 +57,7 @@ function Header() {
             </span>
           </NavLink>
           <nav className="hidden lg:flex items-center gap-1">
-            {menuItems.slice(0, 5).map((item) => <NavItem key={item.to} {...item} />)}
+            {menuItems.slice(0, 6).map((item) => <NavItem key={item.to} {...item}/>)}
           </nav>
           <div className="flex items-center gap-2">
             <div className="hidden lg:flex items-center gap-2">
@@ -73,8 +73,8 @@ function Header() {
                 <LogOut className="w-4 h-4" />
               </Button>
             </div>
-            <Button onClick={() => setShowSidebar(true)} variant="ghost" size="sm" className="lg:hidden text-zinc-400 hover:text-white hover:bg-zinc-700">
-              <Menu className="w-5 h-5" />
+            <Button onClick={() => setShowSidebar(true)} variant="ghost" className="lg:hidden text-zinc-400 hover:text-white hover:bg-zinc-700">
+              <Menu className="w-12 h-12" />
             </Button>
           </div>
         </div>

@@ -33,7 +33,6 @@ const About = () => {
           <div className="h-6 w-px bg-zinc-700" />
           <div>
             <h1 className="text-3xl font-bold text-white">About CrickZone</h1>
-            <p className="text-zinc-400">Revolutionizing cricket score tracking</p>
           </div>
         </div>
 

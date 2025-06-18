@@ -37,7 +37,7 @@ function UserMatches() {
   return (
     <div className="min-h-screen bg-zinc-950 text-white py-9">
       <div className="max-w-5xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mx-6 mb-8">
           <button onClick={() => navigate("/zone")} className="flex items-center gap-2 text-zinc-400 hover:text-white">
             <ArrowLeft className="w-5 h-5" />
             Back
@@ -53,7 +53,7 @@ function UserMatches() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {matches.map((match) => (
-              <div key={match._id} className="relative bg-zinc-900 border border-zinc-800 rounded-lg py-8 px-5 hover:bg-zinc-800/50 transition-colors">
+              <div key={match._id} className="relative bg-zinc-900 border border-zinc-800 rounded-lg py-8 px-5 mx-6 hover:bg-zinc-800/50 transition-colors">
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
                     <button className="absolute top-3 right-3 text-zinc-500 hover:text-red-400">
