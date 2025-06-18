@@ -7,7 +7,7 @@ import { Trophy, Home, RotateCcw } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 
 function Winner() {
-  const { run, wicket, inning, t2name, matchWinner, setTossWinner, over, setUserMatchInfo, userMatchInfo } =
+  const { run, wicket, inning, t2name, matchWinner, setTossWinner, over } =
     useContext(Context)
   const navigate = useNavigate()
 
