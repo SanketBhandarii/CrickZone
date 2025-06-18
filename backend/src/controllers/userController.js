@@ -54,7 +54,7 @@ export const signup = async (req, res) => {
 
   try {
     let user = await User.findOne({
-      $or: [{ username }, { email }],
+      $or: [{ email }],
     });
 
     if (user) {
@@ -112,7 +112,6 @@ export const verifyEmail = async (req, res) => {
       user.verified = true;
       await user.save();
     }
-    // res.sendFile(path.join(__dirname, "../../public/index.html"));
   } catch (error) {
     console.log(error);
     res.status(400).json({ msg: "Invalid or expired token" });
@@ -126,7 +125,6 @@ export const getUserMatches = async (req, res) => {
       .status(401)
       .json({ msg: "No token provided, authorization denied" });
   }
-
   try {
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
     const userId = decoded._id;

@@ -12,7 +12,7 @@ export const googleLogin = async (req, res) => {
 
   try {
     let user = await User.findOne({
-      $or: [{ username }, { email: googleEmail }],
+      email: googleEmail,
     });
 
     if (user) {

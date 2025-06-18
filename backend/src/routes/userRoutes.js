@@ -8,6 +8,7 @@ import {
 } from "../controllers/userController.js";
 import { isAuth } from "../middlewares/isAuth.js";
 import rateLimit from "express-rate-limit";
+import { checkAuth } from "../controllers/checkAuth.js";
 
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -22,5 +23,5 @@ router.get("/verify/:token", verifyEmail);
 router.get("/userMatches", getUserMatches);
 router.post("/login", loginLimiter, login);
 router.get("/logout", logout);
-router.get("/home", isAuth);
+router.get("/home", checkAuth);
 export default router;
