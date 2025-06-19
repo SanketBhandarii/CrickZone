@@ -126,7 +126,7 @@ function ChooseFor() {
 
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white py-3 text-lg font-semibold"
+              className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white py-3 text-md font-semibold"
               disabled={!decision}
             >
               🚀 Start Match

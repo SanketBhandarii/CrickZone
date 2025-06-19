@@ -1,16 +1,16 @@
-import { useContext, useEffect, useState } from "react"
-import Confetti from "react-confetti"
-import Runs from "./Runs"
-import Controls from "./Dwwn"
-import CurrentScore from "./CurrentScore"
-import { Context } from "../../store/Context"
-import { useNavigate } from "react-router-dom"
-import Winner from "../winner/Winner"
-import Voice from "./Voice"
-import SpeechFeatureInfo from "./speechFeatureInfo/SpeecFeatureInfo"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Trophy, Play } from "lucide-react"
+import { useContext, useEffect, useState } from "react";
+import Confetti from "react-confetti";
+import Runs from "./Runs";
+import Controls from "./Dwwn";
+import CurrentScore from "./CurrentScore";
+import { Context } from "../../store/Context";
+import { useNavigate } from "react-router-dom";
+import Winner from "../winner/Winner";
+import Voice from "./Voice";
+import SpeechFeatureInfo from "./speechFeatureInfo/SpeecFeatureInfo";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Trophy, Play } from "lucide-react";
 
 function CrickContainer() {
   const {
@@ -28,57 +28,57 @@ function CrickContainer() {
     inning,
     teamInfo,
     setMatchWinner,
-  } = useContext(Context)
+  } = useContext(Context);
 
-  const navigate = useNavigate()
-  const [showConfetti, setShowConfetti] = useState(false)
+  const navigate = useNavigate();
+  const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
     if (teamInfo === false) {
-      navigate("/zone")
+      navigate("/zone");
     }
-    setCurrentOver(0)
-    setRun(0)
-    setWicket(0)
-    setBall(0)
-    setCurrentRun([])
-  }, [navigate])
+    setCurrentOver(0);
+    setRun(0);
+    setWicket(0);
+    setBall(0);
+    setCurrentRun([]);
+  }, [navigate]);
 
   useEffect(() => {
     if (wicket >= 10 || currentOver >= over) {
       if (match === 1) {
-        localStorage.setItem("t1run", run)
-        localStorage.setItem("t1wicket", wicket)
+        localStorage.setItem("t1run", run);
+        localStorage.setItem("t1wicket", wicket);
       } else if (match === 2) {
-        const t1Run = Number.parseInt(localStorage.getItem("t1run"), 10)
-        const t1Wicket = Number.parseInt(localStorage.getItem("t1wicket"), 10)
+        const t1Run = Number.parseInt(localStorage.getItem("t1run"), 10);
+        const t1Wicket = Number.parseInt(localStorage.getItem("t1wicket"), 10);
 
-        let result
+        let result;
         if (run > t1Run) {
-          result = `Team ${inning} Won The Match`
+          result = `Team ${inning} Won The Match`;
         } else if (run < t1Run) {
-          result = `Team ${localStorage.getItem("t1name")} Won The Match`
+          result = `Team ${localStorage.getItem("t1name")} Won The Match`;
         } else if (run === t1Run) {
-          result = "Match Draw"
+          result = "Match Draw";
         }
-        setMatchWinner(result)
-        setShowConfetti(true)
+        setMatchWinner(result);
+        setShowConfetti(true);
 
         const confettiTimeout = setTimeout(() => {
-          setShowConfetti(false)
-        }, 15000)
+          setShowConfetti(false);
+        }, 15000);
 
-        return () => clearTimeout(confettiTimeout)
+        return () => clearTimeout(confettiTimeout);
       }
     }
-  }, [wicket, currentOver, over, run, inning, match, setMatchWinner])
+  }, [wicket, currentOver, over, run, inning, match, setMatchWinner]);
 
   function startSecondInning() {
-    setCurrentOver(0)
-    setRun(0)
-    setWicket(0)
-    setBall(0)
-    setMatch(2)
+    setCurrentOver(0);
+    setRun(0);
+    setWicket(0);
+    setBall(0);
+    setMatch(2);
   }
 
   return (
@@ -104,11 +104,17 @@ function CrickContainer() {
                 </div>
 
                 <div>
-                  <h5 className="font-semibold text-xl text-white mb-2">Innings Over</h5>
+                  <h5 className="font-semibold text-xl text-white mb-2">
+                    Innings Over
+                  </h5>
                   <p className="text-zinc-400 mb-4">
-                    <span className="text-blue-400 font-semibold">{localStorage.getItem("t1name")}</span> scored{" "}
-                    <span className="text-white font-bold">{run}</span> runs and{" "}
-                    <span className="text-white font-bold">{wicket}</span> wicket(s)
+                    <span className="text-blue-400 font-semibold">
+                      {localStorage.getItem("t1name")}
+                    </span>{" "}
+                    scored <span className="text-white font-bold">{run}</span>{" "}
+                    runs and{" "}
+                    <span className="text-white font-bold">{wicket}</span>{" "}
+                    wicket(s)
                   </p>
                 </div>
 
@@ -159,7 +165,7 @@ function CrickContainer() {
         <Voice />
       </div>
     </>
-  )
+  );
 }
 
-export default CrickContainer
+export default CrickContainer;

@@ -51,9 +51,9 @@ function UserMatches() {
             <p className="text-zinc-500">Start playing to see your match history</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-6">
             {matches.map((match) => (
-              <div key={match._id} className="relative bg-zinc-900 border border-zinc-800 rounded-lg py-8 px-5 mx-6 hover:bg-zinc-800/50 transition-colors">
+              <div key={match._id} className="relative bg-zinc-900 border border-zinc-800 rounded-lg py-8 px-5  hover:bg-zinc-800/50 transition-colors">
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
                     <button className="absolute top-3 right-3 text-zinc-500 hover:text-red-400">

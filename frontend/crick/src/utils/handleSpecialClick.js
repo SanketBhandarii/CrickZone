@@ -1,14 +1,14 @@
 export function handleSpecialClick(
-  msg,
-  setBall,
-  setRun,
-  setCurrentRun,
-  currentOver,
-  over,
-  wicket,
-  setCurrentOver,
-  run
-) {
+    msg,
+    setBall,
+    setRun,
+    setCurrentRun,
+    currentOver,
+    over,
+    wicket,
+    setCurrentOver,
+    run
+) { 
   if (wicket < 10 && currentOver < over) {
     const t1Run = parseInt(localStorage.getItem("t1run"));
    

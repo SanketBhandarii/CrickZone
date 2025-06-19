@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { RotateCcw, AlertTriangle } from "lucide-react"
 
 function Controls() {
-  const { wicket, setWicket, over, ball, setBall, setRun, run, currentRun, currentOver, setCurrentRun } =
+  const { wicket, setWicket, over, ball, setBall, setRun, run, currentRun, currentOver, setCurrentRun, setCurrentOver } =
     useContext(Context)
 
   function handleWickWrapper(value, msg = "W") {
@@ -61,7 +61,7 @@ function Controls() {
 
           <Button
             variant="outline"
-            onClick={() => handleSpecialClick("Wide", setBall, setRun, setCurrentRun, currentOver, over, wicket)}
+            onClick={() => handleSpecialClick("Wide", setBall, setRun, setCurrentRun, currentOver,over,wicket, setCurrentOver, run)}
             className="bg-zinc-800 border-zinc-700 text-white hover:text-white hover:bg-orange-600 hover:border-orange-500"
           >
             Wide
@@ -69,7 +69,7 @@ function Controls() {
 
           <Button
             variant="outline"
-            onClick={() => handleSpecialClick("No ball", setBall, setRun, setCurrentRun, currentOver, over, wicket)}
+            onClick={() => handleSpecialClick("No ball",  setBall, setRun, setCurrentRun, currentOver,over,wicket, setCurrentOver, run)}
             className="bg-zinc-800 border-zinc-700 text-white hover:text-white hover:bg-orange-600 hover:border-orange-500"
           >
             No Ball
