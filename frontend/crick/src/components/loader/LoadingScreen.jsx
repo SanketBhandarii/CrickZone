@@ -1,37 +1,18 @@
-import useAxios from "@/api/axiosInstance";
 import { useEffect, useState } from "react";
 import Intro from "../Zoner/Intro";
 
 const LoadingScreen = ({ children }) => {
   const [loading, setLoading] = useState(true);
-  const [{ data }, execute] = useAxios(
-    {
-      method: "GET",
-      url: `/api/home`,
-      withCredentials: true,
-    },
-    { manual: true }
-  );
 
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const res = await execute();
-      } catch (err) {
-        navigate("/zone/login");
-      } finally {
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
-      }
-    };
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
 
-    checkAuth();
+    return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
-    return <Intro />;
-  }
+  if (loading) return <Intro />;
 
   return children;
 };
