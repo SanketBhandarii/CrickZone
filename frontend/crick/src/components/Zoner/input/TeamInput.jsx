@@ -24,22 +24,13 @@ const TeamField = ({ label, onChange }) => (
 
 function TeamInput() {
   const navigate = useNavigate()
-  const { setT1name, setT2name, t1name, t2name, setOver, setTeamInfo, setTimeToShowHeader, user, setUser } = useContext(Context)
+  const { setT1name, setT2name, t1name, t2name, setOver, setTeamInfo, user } = useContext(Context)
   const [message, setMessage] = useState("")
 
   useEffect(() => {
     localStorage.clear();
     setT1name("");
     setT2name("");
-    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/home`, { withCredentials: true })
-      .then(res => {
-        if (res.data.msg !== "Please do login!") {
-          setUser(res.data.username)
-          setTimeToShowHeader(true)
-        } else {
-          navigate("/zone/login")
-        }
-      }).catch(err => console.error("Auth error:", err))
   }, [])
 
   useEffect(() => setMessage(""), [t1name, t2name])
@@ -48,7 +39,7 @@ function TeamInput() {
     e.preventDefault()
     if (!t1name || !t2name || t1name.toLowerCase() === t2name.toLowerCase()) {
       setMessage("Enter valid and different team names")
-      return
+      return;
     }
     setTeamInfo(true)
     navigate("/zone/toss")
