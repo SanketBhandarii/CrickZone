@@ -97,7 +97,7 @@ function Winner() {
                 History
               </Button>
               <Button
-                onClick={() => navigate("/zone/play")}
+                onClick={() => navigate("/zone")}
                 size="sm"
                 className="bg-white text-black hover:bg-zinc-200"
               >
