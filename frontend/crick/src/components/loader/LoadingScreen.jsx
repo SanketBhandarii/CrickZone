@@ -21,6 +21,7 @@ const LoadingScreen = ({ children }) => {
           setLoading(false);
         }
       } catch (err) {
+        setLoading(false);
         return;
       }
     };
