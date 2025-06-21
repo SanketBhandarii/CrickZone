@@ -18,7 +18,7 @@
   <li>Voice Recognition</li>
   <li>Real-time score updates 🕒</li>
   <li>Dynamic score handling (1 run, 2 runs, 3 runs, 4, 6, wide, no ball, new over) 🎯</li>
-  <li>Live game statistics 📈</li>
+  <li>Live game progress 📈</li>
   <li>Responsive design for mobile and desktop users 📱💻</li>
 </ul>
 
