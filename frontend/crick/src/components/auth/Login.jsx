@@ -99,7 +99,7 @@ function Login() {
           </div>
 
           <div className="flex justify-center">
-            <GoogleLogin onSuccess={handleGoogleLogin} onError={() => toast.error("Google login failed")} />
+            <GoogleLogin onSuccess={handleGoogleLogin} onError={() => toast.error("Google login failed")} ux_mode="redirect"/>
           </div>
         </CardContent>
 
